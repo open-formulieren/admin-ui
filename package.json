@@ -1,0 +1,37 @@
+{
+  "name": "@open-formulieren/admin-ui",
+  "version": "0.1.0",
+  "description": "The new UI for Open Forms administrators.",
+  "type": "module",
+  "exports": {
+    ".": "./dist/index.js",
+    "./*": "./dist/*",
+    "./package.json": "./package.json"
+  },
+  "types": "./dist/index.d.ts",
+  "scripts": {},
+  "files": [
+    "dist/",
+    "i18n"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-formulieren/admin-ui.git"
+  },
+  "author": "Maykin Media",
+  "license": "EUPL-1.2",
+  "bugs": {
+    "url": "https://github.com/open-formulieren/admin-ui/issues"
+  },
+  "homepage": "https://github.com/open-formulieren/admin-ui#readme",
+  "peerDependencies": {
+    "react": "^18.2.0",
+    "react-intl": "^7.0.0 || ^8.0.0"
+  },
+  "devDependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-intl": "^7.0.0"
+  },
+  "dependencies": {}
+}
