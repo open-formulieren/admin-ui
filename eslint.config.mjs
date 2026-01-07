@@ -4,7 +4,7 @@ import {defineConfig} from 'eslint/config';
 import globals from 'globals';
 
 const config = defineConfig([
-  ignoreBuildArtifacts(['dist', 'build', 'storybook-static']),
+  ignoreBuildArtifacts(['dist', 'storybook-static']),
   {
     files: ['**/*.{js,mjs,ts,tsx}'],
   },
