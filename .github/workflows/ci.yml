@@ -1,0 +1,262 @@
+name: Run CI build and tests
+
+# Run this workflow every time a new commit pushed to your repository
+on:
+  push:
+    branches:
+      - main
+      - stable/*
+    tags:
+      - '*'
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+      - ready_for_review
+  workflow_dispatch:
+
+concurrency:
+  group: '${{ github.workflow }}-${{ github.ref_name }}' # unique builds for branch/tag name
+  cancel-in-progress: false # do not cancel in progress, but only in-between builds
+
+jobs:
+  setup:
+    name: Set up the build variables
+    runs-on: ubuntu-latest
+    outputs:
+      # see https://github.com/orgs/community/discussions/26671
+      version: ${{ steps.vars.outputs.version }}
+      git_hash: ${{ steps.vars.outputs.git_hash }}
+    steps:
+      - uses: actions/checkout@v6
+      - name: Extract version info
+        id: vars
+        uses: maykinmedia/open-api-workflows/actions/extract-version@v6
+
+  storybook:
+    name: Create storybook build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Build Storybook docs
+        run: |
+          npm ci
+          npm run compilemessages
+          npm run build-storybook -- --stats-json --quiet
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ./storybook-static
+
+  build-package:
+    name: Create 'production' build
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build library
+        run: |
+          npm run compilemessages
+          npm run build:typecheck
+          npm run build
+
+          if [ -d "./dist/node_modules" ]; then
+            echo "Unexpected 'node_modules' in dist directory!"
+            exit 1
+          fi
+
+      - name: Store build artifact
+        uses: actions/upload-artifact@v6
+        with:
+          name: build
+          path: dist/
+          retention-days: 1
+
+  prettier:
+    name: prettier (code formatting)
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run prettier linter
+        run: npm run checkformat
+
+      - name: Run eslint linter
+        run: npm run lint
+
+  unit-tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up test environment
+        run: |
+          npx playwright install --with-deps
+          npm run compilemessages
+
+      - name: Run tests
+        run: npm run test:vitest -- --coverage
+
+      - name: Publish coverage report
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: vitest
+
+  interaction-tests:
+    name: Run Storybook tests
+    runs-on: ubuntu-22.04
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Set up test environment
+        run: |
+          npx playwright install --with-deps
+          npm run compilemessages
+
+      - name: Serve storybook and run tests
+        run: npm run test:storybook -- --coverage
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          flags: storybook
+
+  i18n-check:
+    name: Check i18n messages extracted
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: open-formulieren/actions/check-message-extraction@v1
+        with:
+          paths: i18n/{compiled,messages}
+          extraction-command: ./bin/makemessages.sh
+          compilation-command: npm run compilemessages
+
+      # Only actually does anything in release/* branches or for pushed tags
+      - uses: open-formulieren/actions/check-missing-translations@v1
+        with:
+          messages-path: i18n/messages
+          locales: nl
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs:
+      - storybook
+      - unit-tests
+      - interaction-tests
+      - prettier
+      - i18n-check
+    # do not run in forks & only publish main branch
+    if: github.ref_name == 'main' && github.repository_owner == 'open-formulieren'
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
+    # Sets permissions of the GITHUB_TOKEN to allow deployment to GitHub Pages
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+  publish:
+    name: Publish the NPM package
+    runs-on: ubuntu-latest
+    needs:
+      - setup
+      - build-package
+      - unit-tests
+      - interaction-tests
+      - prettier
+      - i18n-check
+
+    # do not publish in forks or non-tag pushes
+    if: startsWith(github.ref, 'refs/tags/') && github.repository_owner == 'open-formulieren'
+
+    environment:
+      name: release
+      url: https://www.npmjs.com/package/@open-formulieren/admin-ui
+    permissions:
+      id-token: write
+      contents: read
+
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version-file: '.nvmrc'
+          cache: npm
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@open-formulieren'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Download build artifact
+        uses: actions/download-artifact@v7
+        with:
+          name: build
+          path: dist/
+
+      - name: Publish package to NPM
+        run: |
+          case "${{ needs.setup.outputs.version }}" in
+            *"-alpha."*) npm_tag=next ;;
+            *"-beta."*) npm_tag=next ;;
+            *"-rc."*) npm_tag=next ;;
+            *) npm_tag=latest ;;
+          esac
+
+          npm publish --access public --tag="$npm_tag"
