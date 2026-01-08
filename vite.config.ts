@@ -69,7 +69,7 @@ export default defineConfig(({mode}) => ({
     },
   },
   test: {
-    environment: 'jsdom',
+    environment: 'node',
     setupFiles: './vitest.setup.ts',
     coverage: {
       provider: 'v8',
@@ -82,7 +82,20 @@ export default defineConfig(({mode}) => ({
       ],
       reporter: ['text', 'cobertura', 'html'],
     },
+    browser: {
+      enabled: true,
+      headless: true,
+      provider: playwright({}),
+      instances: [{browser: 'chromium'}],
+    },
     projects: [
+      {
+        extends: true,
+        test: {
+          name: 'unit',
+          include: ['src/**/*.spec.{ts,tsx}', 'src/**/*.test.{ts,tsx}'],
+        },
+      },
       {
         extends: true,
         plugins: [
@@ -92,15 +105,12 @@ export default defineConfig(({mode}) => ({
         ],
         test: {
           name: 'storybook',
-          browser: {
-            enabled: true,
-            headless: true,
-            provider: playwright({}),
-            instances: [{browser: 'chromium'}],
-          },
           setupFiles: ['./vitest.setup.ts'],
         },
       },
     ],
+  },
+  optimizeDeps: {
+    include: ['react-intl'],
   },
 }));
