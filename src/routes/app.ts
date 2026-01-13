@@ -14,7 +14,7 @@ const routes: RouteObject[] = [
         path: 'form',
         children: [
           {
-            path: ':form_id',
+            path: ':formId',
             children: formRoutes,
           },
         ],
