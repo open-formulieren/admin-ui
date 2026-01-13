@@ -88,8 +88,8 @@ jobs:
           path: dist/
           retention-days: 1
 
-  prettier:
-    name: prettier (code formatting)
+  code_quality:
+    name: Validate code formatting with prettier and eslint
     runs-on: ubuntu-latest
 
     steps:
@@ -188,7 +188,7 @@ jobs:
       - storybook
       - unit-tests
       - interaction-tests
-      - prettier
+      - code_quality
       - i18n-check
     # do not run in forks & only publish main branch
     if: github.ref_name == 'main' && github.repository_owner == 'open-formulieren'
@@ -219,7 +219,7 @@ jobs:
       - build-package
       - unit-tests
       - interaction-tests
-      - prettier
+      - code_quality
       - i18n-check
 
     # do not publish in forks or non-tag pushes
