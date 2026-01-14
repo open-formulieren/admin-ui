@@ -1,8 +1,15 @@
-import type {RouteObject} from 'react-router';
+import type {RouteObject} from './types';
 
 const routes: RouteObject[] = [
   {
     path: 'design',
+    handle: {
+      breadcrumbLabel: intl =>
+        intl.formatMessage({
+          description: 'Route breadcrumb label for form detail design',
+          defaultMessage: 'design',
+        }),
+    },
     children: [
       {
         path: 'introduction-page',
@@ -20,6 +27,13 @@ const routes: RouteObject[] = [
   },
   {
     path: 'logic',
+    handle: {
+      breadcrumbLabel: intl =>
+        intl.formatMessage({
+          description: 'Route breadcrumb label for form detail logic',
+          defaultMessage: 'logic',
+        }),
+    },
     children: [
       {
         path: 'form-rules',
@@ -34,6 +48,13 @@ const routes: RouteObject[] = [
   },
   {
     path: 'settings',
+    handle: {
+      breadcrumbLabel: intl =>
+        intl.formatMessage({
+          description: 'Route breadcrumb label for form detail settings',
+          defaultMessage: 'settings',
+        }),
+    },
     children: [
       {
         path: 'general',

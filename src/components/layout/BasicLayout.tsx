@@ -2,15 +2,13 @@ import {Body, CardBaseTemplate, Column, Logo, Outline, Toolbar} from '@maykin-ui
 import '@maykin-ui/admin-ui/style';
 import {Outlet} from 'react-router';
 
+import {useBreadcrumbItems} from '@/hooks/useBreadcrumbItems';
+
 const BasicLayout = () => {
+  const breadcrumbItems = useBreadcrumbItems();
   return (
     <CardBaseTemplate
-      breadcrumbItems={[
-        {
-          href: '/',
-          label: 'Home',
-        },
-      ]}
+      breadcrumbItems={breadcrumbItems}
       primaryNavigationItems={[
         <Logo key="Logo" abbreviated />,
         'spacer',
