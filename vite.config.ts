@@ -56,7 +56,7 @@ export default defineConfig(({mode}) => ({
   },
   build: {
     lib: {
-      entry: resolve(_OF_INTERNAL_dirname, 'src/index.ts'),
+      entry: resolve(_OF_INTERNAL_dirname, 'src/index.tsx'),
       formats: ['es'],
     },
     rollupOptions: {
