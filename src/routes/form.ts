@@ -60,7 +60,7 @@ const routes: RouteObject[] = [
         path: 'confirmation',
       },
       {
-        path: 'submission',
+        path: 'submissions',
       },
       {
         path: 'payment',

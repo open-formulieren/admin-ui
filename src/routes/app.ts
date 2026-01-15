@@ -5,13 +5,13 @@ import formRoutes from './form';
 const routes: RouteObject[] = [
   // All other routes, point back to old admin
   {
-    path: 'forms',
+    path: '/',
     children: [
       {
-        path: 'categories',
+        path: 'form-categories',
       },
       {
-        path: 'form',
+        path: 'forms',
         children: [
           {
             path: ':formId',
