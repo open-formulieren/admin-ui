@@ -4,6 +4,7 @@ import {reactIntl} from './reactIntl';
 
 const preview: Preview = {
   parameters: {
+    reactIntl,
     controls: {
       matchers: {
         color: /(background|color)$/i,

@@ -1,2 +1,37 @@
 {
+  "2vFy0E": {
+    "defaultMessage": "Categorieën",
+    "description": "Route breadcrumb label for form categories",
+    "originalDefault": "categories"
+  },
+  "DPiQcJ": {
+    "defaultMessage": "Inzendingstatistieken",
+    "description": "Route breadcrumb label for form submission statistics",
+    "originalDefault": "form submission statistics"
+  },
+  "KJFOCt": {
+    "defaultMessage": "Logica",
+    "description": "Route breadcrumb label for form detail logic",
+    "originalDefault": "logic"
+  },
+  "Qroj81": {
+    "defaultMessage": "Formulieren",
+    "description": "Route breadcrumb label for forms overview",
+    "originalDefault": "forms"
+  },
+  "ZiDANM": {
+    "defaultMessage": "Home",
+    "description": "Route breadcrumb label for home",
+    "originalDefault": "home"
+  },
+  "aEaZkg": {
+    "defaultMessage": "Ontwerpen",
+    "description": "Route breadcrumb label for form detail design",
+    "originalDefault": "design"
+  },
+  "pSTlTi": {
+    "defaultMessage": "Instellingen",
+    "description": "Route breadcrumb label for form detail settings",
+    "originalDefault": "settings"
+  }
 }
