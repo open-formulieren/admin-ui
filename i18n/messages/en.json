@@ -1,2 +1,37 @@
 {
+  "2vFy0E": {
+    "defaultMessage": "Categories",
+    "description": "Route breadcrumb label for form categories",
+    "originalDefault": "categories"
+  },
+  "DPiQcJ": {
+    "defaultMessage": "Form submission statistics",
+    "description": "Route breadcrumb label for form submission statistics",
+    "originalDefault": "form submission statistics"
+  },
+  "KJFOCt": {
+    "defaultMessage": "Logic",
+    "description": "Route breadcrumb label for form detail logic",
+    "originalDefault": "logic"
+  },
+  "Qroj81": {
+    "defaultMessage": "Forms",
+    "description": "Route breadcrumb label for forms overview",
+    "originalDefault": "forms"
+  },
+  "ZiDANM": {
+    "defaultMessage": "Home",
+    "description": "Route breadcrumb label for home",
+    "originalDefault": "home"
+  },
+  "aEaZkg": {
+    "defaultMessage": "Design",
+    "description": "Route breadcrumb label for form detail design",
+    "originalDefault": "design"
+  },
+  "pSTlTi": {
+    "defaultMessage": "Settings",
+    "description": "Route breadcrumb label for form detail settings",
+    "originalDefault": "settings"
+  }
 }
