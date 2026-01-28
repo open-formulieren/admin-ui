@@ -3,6 +3,7 @@ import {reactRouterParameters, withRouter} from 'storybook-addon-remix-react-rou
 
 import BasicLayout from '@/components/layout/BasicLayout';
 import type {RouteHandle} from '@/routes/types';
+import {withAdminSettingsProvider} from '@/sb-decorators';
 
 const SimplePageContent = () => (
   <div>
@@ -17,7 +18,7 @@ export default {
   parameters: {
     layout: 'fullscreen',
   },
-  decorators: [withRouter],
+  decorators: [withRouter, withAdminSettingsProvider],
 } satisfies Meta<typeof BasicLayout>;
 
 type Story = StoryObj<typeof BasicLayout>;
