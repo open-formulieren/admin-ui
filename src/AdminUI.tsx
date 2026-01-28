@@ -1,3 +1,6 @@
+import '@maykin-ui/admin-ui/style';
+// @TODO update theme after upgrading admin-ui
+import '@maykin-ui/admin-ui/style/themes/purple-rain.css';
 import React from 'react';
 import {RouterProvider, createBrowserRouter} from 'react-router';
 
