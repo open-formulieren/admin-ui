@@ -5,6 +5,12 @@
       "value": "Categories"
     }
   ],
+  "BfpzoP": [
+    {
+      "type": 0,
+      "value": "Scheduled form"
+    }
+  ],
   "DPiQcJ": [
     {
       "type": 0,
@@ -35,10 +41,28 @@
       "value": "Design"
     }
   ],
+  "e/VFua": [
+    {
+      "type": 0,
+      "value": "Active form"
+    }
+  ],
+  "pJ2Kxl": [
+    {
+      "type": 0,
+      "value": "Form in maintenance mode"
+    }
+  ],
   "pSTlTi": [
     {
       "type": 0,
       "value": "Settings"
+    }
+  ],
+  "t5YtWB": [
+    {
+      "type": 0,
+      "value": "Inactive form"
     }
   ]
 }

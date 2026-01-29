@@ -1,8 +1,13 @@
+import '@maykin-ui/admin-ui/style';
+// @TODO update theme after upgrading admin-ui
+import '@maykin-ui/admin-ui/style/themes/purple-rain.css';
 import type {Preview} from '@storybook/react-vite';
 
+import {withIntl} from './decorators';
 import {reactIntl} from './reactIntl';
 
 const preview: Preview = {
+  decorators: [withIntl],
   parameters: {
     reactIntl,
     controls: {

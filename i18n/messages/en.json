@@ -4,6 +4,11 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "BfpzoP": {
+    "defaultMessage": "Scheduled form",
+    "description": "Label for form status \"scheduled\"",
+    "originalDefault": "Scheduled form"
+  },
   "DPiQcJ": {
     "defaultMessage": "Form submission statistics",
     "description": "Route breadcrumb label for form submission statistics",
@@ -29,9 +34,24 @@
     "description": "Route breadcrumb label for form detail design",
     "originalDefault": "design"
   },
+  "e/VFua": {
+    "defaultMessage": "Active form",
+    "description": "Label for form status \"active\"",
+    "originalDefault": "Active form"
+  },
+  "pJ2Kxl": {
+    "defaultMessage": "Form in maintenance mode",
+    "description": "Label for form status \"maintenance\"",
+    "originalDefault": "Form in maintenance mode"
+  },
   "pSTlTi": {
     "defaultMessage": "Settings",
     "description": "Route breadcrumb label for form detail settings",
     "originalDefault": "settings"
+  },
+  "t5YtWB": {
+    "defaultMessage": "Inactive form",
+    "description": "Label for form status \"inactive\"",
+    "originalDefault": "Inactive form"
   }
 }

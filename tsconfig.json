@@ -19,7 +19,8 @@
     "resolveJsonModule": true,
     "noErrorTruncation": true,
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/sb-decorators": ["../.storybook/decorators.tsx"]
     },
     "skipLibCheck": true
   },

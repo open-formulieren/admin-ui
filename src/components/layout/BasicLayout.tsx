@@ -1,14 +1,22 @@
-import {Body, CardBaseTemplate, Column, Logo, Outline, Toolbar} from '@maykin-ui/admin-ui';
+import {
+  Body,
+  Breadcrumbs,
+  CardBaseTemplate,
+  Column,
+  Logo,
+  Outline,
+  Toolbar,
+} from '@maykin-ui/admin-ui';
 import '@maykin-ui/admin-ui/style';
 import {Outlet} from 'react-router';
 
+import {EnvironmentBadge, FormStatusBadge} from '@/components/badge';
 import {useBreadcrumbItems} from '@/hooks/useBreadcrumbItems';
 
 const BasicLayout = () => {
   const breadcrumbItems = useBreadcrumbItems();
   return (
     <CardBaseTemplate
-      breadcrumbItems={breadcrumbItems}
       primaryNavigationItems={[
         <Logo key="Logo" abbreviated />,
         'spacer',
@@ -55,6 +63,25 @@ const BasicLayout = () => {
         },
       ]}
     >
+      <Toolbar
+        align="space-between"
+        direction="horizontal"
+        pad
+        items={[
+          <Breadcrumbs key="breadcrumbs" items={breadcrumbItems} />,
+          <Toolbar
+            key="badges"
+            direction="horizontal"
+            pad={false}
+            justify={false}
+            items={[
+              <EnvironmentBadge key="environment-badge" />,
+              // Dynamically show/hide badge and set status
+              <FormStatusBadge key="form-status-badge" status={'active'} />,
+            ]}
+          />,
+        ]}
+      />
       <Body fullHeight>
         <Outlet />
       </Body>

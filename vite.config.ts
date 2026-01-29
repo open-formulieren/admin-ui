@@ -49,6 +49,11 @@ export default defineConfig(({mode}) => ({
     }),
     dts({tsconfigPath: './tsconfig.prod.json'}),
   ],
+  resolve: {
+    alias: {
+      '@/components': resolve(_OF_INTERNAL_dirname, 'src/components'),
+    },
+  },
   css: {
     preprocessorOptions: {
       scss: {quietDeps: true},
