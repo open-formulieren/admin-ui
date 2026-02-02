@@ -2,12 +2,22 @@ import {Badge} from '@maykin-ui/admin-ui';
 
 import {useAdminSettings} from '@/hooks/useAdminSettings';
 
-import './EnvironmentBadge.scss';
-
 const EnvironmentBadge = () => {
-  const {environment} = useAdminSettings();
+  const {environmentInfo} = useAdminSettings();
+  const {label, showBadge, backgroundColor, foregroundColor} = environmentInfo;
 
-  return <Badge className="mykn-badge openforms-environment-badge">{environment}</Badge>;
+  if (!showBadge) return null;
+
+  return (
+    <Badge
+      style={{
+        '--mykn-badge-color-background': backgroundColor ?? '#e8a600',
+        '--mykn-badge-color-text': foregroundColor ?? '#333333',
+      }}
+    >
+      {label}
+    </Badge>
+  );
 };
 
 export default EnvironmentBadge;

@@ -5,26 +5,27 @@ import React from 'react';
 import {RouterProvider, createBrowserRouter} from 'react-router';
 
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
+import type {AdminSettings} from '@/context/context';
 import routes from '@/routes';
 
 interface AdminUIProps {
   /**
-   * The environment name of the Open Forms instance.
+   * Configuration for the Open Forms environment.
    */
-  environment: string;
+  environmentInfo: AdminSettings['environmentInfo'];
 }
 
 /**
  * Main component to render the Open Forms Admin UI.
  */
-const AdminUI: React.FC<AdminUIProps> = ({environment}) => {
+const AdminUI: React.FC<AdminUIProps> = ({environmentInfo}) => {
   const router = createBrowserRouter(routes, {
     basename: '/admin-ui',
   });
 
   return (
     <React.StrictMode>
-      <AdminSettingsProvider environment={environment}>
+      <AdminSettingsProvider environmentInfo={environmentInfo}>
         <RouterProvider router={router} />
       </AdminSettingsProvider>
     </React.StrictMode>
