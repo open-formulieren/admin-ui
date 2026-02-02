@@ -1,13 +1,10 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
 
-import {withAdminSettingsProvider} from '@/sb-decorators';
-
 import FormStatusBadge from './FormStatusBadge';
 
 export default {
   title: 'Internal API / Badge / Form Status Badge',
   component: FormStatusBadge,
-  decorators: [withAdminSettingsProvider],
   args: {
     status: 'active',
   },

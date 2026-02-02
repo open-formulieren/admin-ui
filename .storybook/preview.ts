@@ -3,9 +3,12 @@ import '@maykin-ui/admin-ui/style';
 import '@maykin-ui/admin-ui/style/themes/purple-rain.css';
 import type {Preview} from '@storybook/react-vite';
 
+import {withAdminSettingsProvider} from '@/sb-decorators';
+
 import {reactIntl} from './reactIntl';
 
 const preview: Preview = {
+  decorators: [withAdminSettingsProvider],
   parameters: {
     reactIntl,
     controls: {
