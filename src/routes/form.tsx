@@ -1,14 +1,17 @@
+import {FormattedMessage} from 'react-intl';
+
 import type {RouteObject} from './types';
 
 const routes: RouteObject[] = [
   {
     path: 'design',
     handle: {
-      breadcrumbLabel: intl =>
-        intl.formatMessage({
-          description: 'Route breadcrumb label for form detail design',
-          defaultMessage: 'design',
-        }),
+      breadcrumbLabel: () => (
+        <FormattedMessage
+          description="Route breadcrumb label for form detail design"
+          defaultMessage="design"
+        />
+      ),
     },
     children: [
       {
@@ -28,11 +31,12 @@ const routes: RouteObject[] = [
   {
     path: 'logic',
     handle: {
-      breadcrumbLabel: intl =>
-        intl.formatMessage({
-          description: 'Route breadcrumb label for form detail logic',
-          defaultMessage: 'logic',
-        }),
+      breadcrumbLabel: () => (
+        <FormattedMessage
+          description="Route breadcrumb label for form detail logic"
+          defaultMessage="logic"
+        />
+      ),
     },
     children: [
       {
@@ -49,11 +53,12 @@ const routes: RouteObject[] = [
   {
     path: 'settings',
     handle: {
-      breadcrumbLabel: intl =>
-        intl.formatMessage({
-          description: 'Route breadcrumb label for form detail settings',
-          defaultMessage: 'settings',
-        }),
+      breadcrumbLabel: () => (
+        <FormattedMessage
+          description="Route breadcrumb label for form detail settings"
+          defaultMessage="settings"
+        />
+      ),
     },
     children: [
       {
