@@ -1,3 +1,5 @@
+import {FormattedMessage} from 'react-intl';
+
 import FormLayout from '@/components/layout/FormLayout';
 import RouterErrorBoundary from '@/errors/RouterErrorBoundary';
 import {formLoader, queryClient} from '@/queryClient';
@@ -12,38 +14,38 @@ const routes: RouteObject[] = [
     path: '/',
     ErrorBoundary: RouterErrorBoundary,
     handle: {
-      breadcrumbLabel: intl =>
-        intl.formatMessage({
-          description: 'Route breadcrumb label for home',
-          defaultMessage: 'home',
-        }),
+      breadcrumbLabel: () => (
+        <FormattedMessage description="Route breadcrumb label for home" defaultMessage="home" />
+      ),
     },
     children: [
       {
         path: 'form-categories',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for form categories',
-              defaultMessage: 'categories',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for form categories"
+              defaultMessage="categories"
+            />
+          ),
         },
       },
       {
         path: 'forms',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for forms overview',
-              defaultMessage: 'forms',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for forms overview"
+              defaultMessage="forms"
+            />
+          ),
         },
         children: [
           {
             path: ':formId',
             loader: ({params}) => formLoader(queryClient, params.formId),
             handle: {
-              breadcrumbLabel: (_, loaderData) => loaderData?.name ?? 'unknown form',
+              breadcrumbLabel: loaderData => loaderData?.name ?? 'unknown form',
             } as RouteHandle<Form | undefined>,
             Component: FormLayout,
             children: formRoutes,
@@ -53,11 +55,12 @@ const routes: RouteObject[] = [
       {
         path: 'form-submission-statistics',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for form submission statistics',
-              defaultMessage: 'form submission statistics',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for form submission statistics"
+              defaultMessage="form submission statistics"
+            />
+          ),
         },
       },
     ],

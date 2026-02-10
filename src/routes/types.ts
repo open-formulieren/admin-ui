@@ -1,11 +1,10 @@
-import type {IntlShape} from 'react-intl';
 import type {
   IndexRouteObject as RRIndexRouteObject,
   NonIndexRouteObject as RRNonIndexRouteObject,
 } from 'react-router';
 
 export interface RouteHandle<T> {
-  breadcrumbLabel?: (intl: IntlShape, loaderData: T) => string;
+  breadcrumbLabel?: (loaderData: T) => React.ReactNode;
 }
 
 /**
