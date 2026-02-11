@@ -1,4 +1,5 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
+import {expect, within} from 'storybook/test';
 
 import EnvironmentBadge from '@/components/badge/EnvironmentBadge';
 
@@ -26,8 +27,14 @@ export const HideEnvironmentBadge: Story = {
   parameters: {
     adminSettings: {
       environmentInfo: {
-        showEnvironmentInfo: false,
+        label: 'Env badge',
+        showBadge: false,
       },
     },
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    expect(canvas.queryByText('Env badge')).not.toBeInTheDocument();
   },
 };
