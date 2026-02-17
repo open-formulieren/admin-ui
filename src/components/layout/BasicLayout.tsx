@@ -7,7 +7,6 @@ import {
   Outline,
   Toolbar,
 } from '@maykin-ui/admin-ui';
-import '@maykin-ui/admin-ui/style';
 import {Outlet} from 'react-router';
 
 import {EnvironmentBadge, FormStatusBadge} from '@/components/badge';
