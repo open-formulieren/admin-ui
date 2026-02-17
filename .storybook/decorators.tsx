@@ -5,6 +5,7 @@ import {fn} from 'storybook/test';
 
 import {BASE_URL} from '@/api-mocks';
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
+import {sessionExpiresAt} from '@/guard/session/session-expiry';
 
 export const withAdminSettingsProvider: Decorator = (Story, {parameters}) => (
   <AdminSettingsProvider
@@ -64,4 +65,14 @@ export const withFormik: Decorator = (Story, {parameters}) => {
       )}
     </Formik>
   );
+};
+
+export const withSessionExpiry: Decorator = (Story, {parameters}) => {
+  sessionExpiresAt.setValue({
+    date: parameters?.sessionExpiry?.date ?? null,
+    numSeconds: parameters?.sessionExpiry?.numSeconds ?? null,
+    authFailure: parameters?.sessionExpiry?.authFailure ?? null,
+  });
+
+  return <Story />;
 };
