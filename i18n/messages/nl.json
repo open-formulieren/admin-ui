@@ -4,6 +4,11 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "6UFbVC": {
+    "defaultMessage": "Je moet ingelogd zijn voor deze actie.",
+    "description": "'Not authenticated' error message",
+    "originalDefault": "There was an authentication problem."
+  },
   "9eNQrq": {
     "defaultMessage": "{isRequired, select, true {{label} <span>Verplicht</span>} other {{label}} }",
     "description": "Form field label content/wrapper",
@@ -19,10 +24,25 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "JX8BYx": {
+    "defaultMessage": "Er ging helaas iets fout!",
+    "description": "'Generic' error message",
+    "originalDefault": "Unfortunately something went wrong!"
+  },
   "KJFOCt": {
     "defaultMessage": "Logica",
     "description": "Route breadcrumb label for form detail logic",
     "originalDefault": "logic"
+  },
+  "KVq/7p": {
+    "defaultMessage": "Ga naar de login pagina",
+    "description": "'Go to login page' link text",
+    "originalDefault": "Go to the login page"
+  },
+  "NJ3Psx": {
+    "defaultMessage": "Je sessie is verlopen.",
+    "description": "Session expiry notice - expired",
+    "originalDefault": "Your session has expired."
   },
   "Qroj81": {
     "defaultMessage": "Formulieren",
@@ -44,6 +64,11 @@
     "description": "Label for form status \"active\"",
     "originalDefault": "Active form"
   },
+  "nxMx4O": {
+    "defaultMessage": "Inlogprobleem",
+    "description": "'Not authenticated' error title",
+    "originalDefault": "Authentication problem"
+  },
   "pJ2Kxl": {
     "defaultMessage": "Formulier in onderhoudsmodus",
     "description": "Label for form status \"maintenance\"",
@@ -54,9 +79,19 @@
     "description": "Route breadcrumb label for form detail settings",
     "originalDefault": "settings"
   },
+  "rZfe8Z": {
+    "defaultMessage": "Excuses, we konden deze actie niet uitvoeren omdat u uitgelogd bent. Uw sessie is waarschijnlijk vervallen.",
+    "description": "Session expiry notice - API call failed with 401",
+    "originalDefault": "Sorry, we couldn't do that because you are logged out - this may be because your session expired."
+  },
   "t5YtWB": {
     "defaultMessage": "Formulier niet actief",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "zEFFxg": {
+    "defaultMessage": "Oeps!",
+    "description": "'Generic' error title",
+    "originalDefault": "Oops!"
   }
 }
