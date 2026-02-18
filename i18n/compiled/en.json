@@ -5,10 +5,22 @@
       "value": "Categories"
     }
   ],
+  "4hl9jg": [
+    {
+      "type": 0,
+      "value": "There was an authentication and/or permission problem."
+    }
+  ],
   "BfpzoP": [
     {
       "type": 0,
       "value": "Scheduled form"
+    }
+  ],
+  "DK2ewv": [
+    {
+      "type": 0,
+      "value": "Authentication problem"
     }
   ],
   "DPiQcJ": [
@@ -17,10 +29,22 @@
       "value": "Form submission statistics"
     }
   ],
+  "JX8BYx": [
+    {
+      "type": 0,
+      "value": "Unfortunately something went wrong!"
+    }
+  ],
   "KJFOCt": [
     {
       "type": 0,
       "value": "Logic"
+    }
+  ],
+  "NJ3Psx": [
+    {
+      "type": 0,
+      "value": "Your session has expired."
     }
   ],
   "Qroj81": [
@@ -59,10 +83,22 @@
       "value": "Settings"
     }
   ],
+  "rZfe8Z": [
+    {
+      "type": 0,
+      "value": "Sorry, we couldn't do that because you are logged out - this may be because your session expired."
+    }
+  ],
   "t5YtWB": [
     {
       "type": 0,
       "value": "Inactive form"
+    }
+  ],
+  "zEFFxg": [
+    {
+      "type": 0,
+      "value": "Oops!"
     }
   ]
 }
