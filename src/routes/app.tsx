@@ -1,3 +1,4 @@
+import FormLayout from '@/components/layout/FormLayout';
 import {formLoader, queryClient} from '@/queryClient';
 import type {Form} from '@/types/form';
 
@@ -42,6 +43,7 @@ const routes: RouteObject[] = [
             handle: {
               breadcrumbLabel: (_, loaderData) => loaderData?.name ?? 'unknown form',
             } as RouteHandle<Form | undefined>,
+            Component: FormLayout,
             children: formRoutes,
           },
         ],

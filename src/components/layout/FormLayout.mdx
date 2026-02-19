@@ -1,0 +1,64 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+
+import * as FormLayoutStories from './FormLayout.stories';
+
+<Meta of={FormLayoutStories} />
+
+# Form Layout
+
+The `FormLayout` component is used to provide Formik state/context to the form-detail pages, and
+handle the form submission.
+
+`FormLayout` use the custom react-router loader `formLoader` to fetch the form details. The
+`formLoader` loader uses a tanstack query client to keep a cached version of the form details, to
+prevent duplicate API requests.
+
+The form submissions are persisted through a tanstack useMutation: `useFormMutation`.
+`useFormMutation` persists the data to API, and updates the local form details cache.
+
+The Formik state/context is added through a secondary `FormLayoutInner` component.
+
+## Form Layout Inner
+
+The `FormLayoutInner` component takes the initial form values and submission handles as properties
+from the `FormLayout`, and assigns them to the Formik context. This separation of concerns keeps the
+implementation and testing simple.
+
+## Example
+
+A simple form page example:
+
+```tsx
+import {Button} from '@maykin-ui/admin-ui';
+import {Field, Form} from 'formik';
+
+const FormPageContent: React.FC = () => {
+  return (
+    <Form>
+      <div>
+        <label htmlFor="form-name">Form name</label>
+        <Field id="form-name" name="name" />
+      </div>
+
+      <Button variant="primary" type="submit">
+        Submit
+      </Button>
+    </Form>
+  );
+};
+```
+
+<Canvas of={FormLayoutStories.Default} />
+
+## Usage in React-Router
+
+The `FormLayout` component should be used as a router layout. It uses the `Outlet` React-Router
+component to render child-routes as children of the Formik context.
+
+With this, the individual form pages simply render their own form fields. Using the Formik hooks,
+like `useField`, the form values and context are available to the form fields.
+
+## Form Fields
+
+For the form fields we use the Maykin Admin-ui components, with additional Formik wrappers to handle
+state management, validation and error messages.
