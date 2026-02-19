@@ -20,7 +20,7 @@ export const useBreadcrumbItems = (): BreadcrumbItem[] => {
 
   // To add type safety, we need to cast the matches from UIMatch<unknown, unknown>[]
   // to UIMatch<unknown, RouteHandle>[].
-  const matches = useMatches() as UIMatch<unknown, RouteHandle>[];
+  const matches = useMatches() as UIMatch<unknown, RouteHandle<unknown>>[];
   return matches
     .filter(m => !!m?.handle?.breadcrumbLabel)
     .map(m => ({

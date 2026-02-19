@@ -1,5 +1,8 @@
+import {formLoader, queryClient} from '@/queryClient';
+import type {Form} from '@/types/form';
+
 import formRoutes from './form';
-import type {RouteObject} from './types';
+import type {RouteHandle, RouteObject} from './types';
 
 const routes: RouteObject[] = [
   // All other routes, point back to old admin
@@ -35,13 +38,10 @@ const routes: RouteObject[] = [
         children: [
           {
             path: ':formId',
+            loader: ({params}) => formLoader(queryClient, params.formId),
             handle: {
-              breadcrumbLabel: () => {
-                // @TODO We should use the name of the form as breadcrumb label.
-                // See https://reactrouter.com/6.30.2/hooks/use-matches for example implementation.
-                return '[form name]';
-              },
-            },
+              breadcrumbLabel: (_, loaderData) => loaderData?.name ?? 'unknown form',
+            } as RouteHandle<Form | undefined>,
             children: formRoutes,
           },
         ],
