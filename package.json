@@ -90,7 +90,8 @@
   "dependencies": {
     "@maykin-ui/admin-ui": "^2.0.0-beta.2",
     "@tanstack/react-query": "^5.90.16",
-    "react-router": "^7.12.0"
+    "react-router": "^7.12.0",
+    "state-pool": "^0.10.2"
   },
   "msw": {
     "workerDirectory": [

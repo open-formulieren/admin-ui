@@ -5,10 +5,22 @@
       "value": "Categorieën"
     }
   ],
+  "4hl9jg": [
+    {
+      "type": 0,
+      "value": "Je moet ingelogd zijn voor deze actie."
+    }
+  ],
   "BfpzoP": [
     {
       "type": 0,
       "value": "Formulier ingepland"
+    }
+  ],
+  "DK2ewv": [
+    {
+      "type": 0,
+      "value": "Inlogprobleem"
     }
   ],
   "DPiQcJ": [
@@ -17,10 +29,22 @@
       "value": "Inzendingstatistieken"
     }
   ],
+  "JX8BYx": [
+    {
+      "type": 0,
+      "value": "Er ging helaas iets fout!"
+    }
+  ],
   "KJFOCt": [
     {
       "type": 0,
       "value": "Logica"
+    }
+  ],
+  "NJ3Psx": [
+    {
+      "type": 0,
+      "value": "Je sessie is verlopen."
     }
   ],
   "Qroj81": [
@@ -59,10 +83,22 @@
       "value": "Instellingen"
     }
   ],
+  "rZfe8Z": [
+    {
+      "type": 0,
+      "value": "Excuses, we konden deze actie niet uitvoeren omdat u uitgelogd bent. Uw sessie is waarschijnlijk vervallen."
+    }
+  ],
   "t5YtWB": [
     {
       "type": 0,
       "value": "Formulier niet actief"
+    }
+  ],
+  "zEFFxg": [
+    {
+      "type": 0,
+      "value": "Oeps!"
     }
   ]
 }

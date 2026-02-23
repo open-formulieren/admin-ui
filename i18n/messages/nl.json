@@ -4,20 +4,40 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "4hl9jg": {
+    "defaultMessage": "Je moet ingelogd zijn voor deze actie.",
+    "description": "'Permission denied' error message",
+    "originalDefault": "There was an authentication and/or permission problem."
+  },
   "BfpzoP": {
     "defaultMessage": "Formulier ingepland",
     "description": "Label for form status \"scheduled\"",
     "originalDefault": "Scheduled form"
+  },
+  "DK2ewv": {
+    "defaultMessage": "Inlogprobleem",
+    "description": "'Permission denied' error title",
+    "originalDefault": "Authentication problem"
   },
   "DPiQcJ": {
     "defaultMessage": "Inzendingstatistieken",
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "JX8BYx": {
+    "defaultMessage": "Er ging helaas iets fout!",
+    "description": "'Generic' error message",
+    "originalDefault": "Unfortunately something went wrong!"
+  },
   "KJFOCt": {
     "defaultMessage": "Logica",
     "description": "Route breadcrumb label for form detail logic",
     "originalDefault": "logic"
+  },
+  "NJ3Psx": {
+    "defaultMessage": "Je sessie is verlopen.",
+    "description": "Session expiry notice - expired",
+    "originalDefault": "Your session has expired."
   },
   "Qroj81": {
     "defaultMessage": "Formulieren",
@@ -49,9 +69,19 @@
     "description": "Route breadcrumb label for form detail settings",
     "originalDefault": "settings"
   },
+  "rZfe8Z": {
+    "defaultMessage": "Excuses, we konden deze actie niet uitvoeren omdat u uitgelogd bent. Uw sessie is waarschijnlijk vervallen.",
+    "description": "Session expiry notice - API call failed with 401",
+    "originalDefault": "Sorry, we couldn't do that because you are logged out - this may be because your session expired."
+  },
   "t5YtWB": {
     "defaultMessage": "Formulier niet actief",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "zEFFxg": {
+    "defaultMessage": "Oeps!",
+    "description": "'Generic' error title",
+    "originalDefault": "Oops!"
   }
 }
