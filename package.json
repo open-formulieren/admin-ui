@@ -66,7 +66,6 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^6.1.1",
     "eslint-plugin-storybook": "^10.1.11",
-    "msw": "^2.12.7",
     "msw-storybook-addon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.57.0",
@@ -92,6 +91,8 @@
     "@maykin-ui/admin-ui": "^3.0.0-alpha.1",
     "@tanstack/react-query": "^5.90.16",
     "formik": "^2.4.9",
+    "lodash": "^4.17.23",
+    "msw": "^2.12.7",
     "react-router": "^7.12.0"
   },
   "msw": {
