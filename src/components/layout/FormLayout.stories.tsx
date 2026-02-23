@@ -5,11 +5,19 @@ import {Field, Form} from 'formik';
 import {RouterProvider, createMemoryRouter} from 'react-router';
 import {expect, fn, userEvent, within} from 'storybook/test';
 
-import {buildForm, mockFormDetailsGet} from '@/api-mocks/form';
+import {mswWorker} from '@/api-mocks';
+import {buildForm, mockFormDetailsGet, mockFormDetailsPut} from '@/api-mocks/form';
 import FormLayout, {FormLayoutInner} from '@/components/layout/FormLayout';
 import {formLoader} from '@/queryClient';
 
-const withFormQueryClientAndRouterProvider: Decorator = Story => {
+const withFormQueryClientAndRouterProvider: Decorator = (Story, context) => {
+  const storyHandlers = context.parameters?.msw?.handlers ?? [];
+
+  // Register story handlers BEFORE router is created
+  if (storyHandlers.length > 0) {
+    mswWorker.use(...storyHandlers);
+  }
+
   const storybookQueryClient = new QueryClient({
     defaultOptions: {
       queries: {retry: false},
@@ -101,7 +109,7 @@ export const FetchingFormDetailsUsingRouteLoader: FromRouterStory = {
   render: () => <FormPageContent />,
   parameters: {
     msw: {
-      handlers: [mockFormDetailsGet(buildForm({name: 'Route fetched form'}))],
+      handlers: [mockFormDetailsGet(buildForm({name: 'Route fetched form'})), mockFormDetailsPut()],
     },
   },
   play: async ({canvasElement}) => {
