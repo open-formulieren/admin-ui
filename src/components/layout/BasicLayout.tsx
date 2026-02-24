@@ -10,6 +10,7 @@ import {
 import {Outlet} from 'react-router';
 
 import {EnvironmentBadge, FormStatusBadge} from '@/components/badge';
+import Sidebar from '@/components/menu/Sidebar';
 import {useBreadcrumbItems} from '@/hooks/useBreadcrumbItems';
 
 export interface BasicLayoutProps {
@@ -40,39 +41,7 @@ const BasicLayout: React.FC<BasicLayoutProps> = ({footer, children}) => {
           children: <Outline.QuestionMarkCircleIcon />,
         },
       ]}
-      sidebarItems={[
-        {
-          align: 'start',
-          active: true,
-          variant: 'primary',
-          children: (
-            <>
-              <Outline.PencilSquareIcon />
-              Menu item 1
-            </>
-          ),
-        },
-        {
-          align: 'start',
-          variant: 'transparent',
-          children: (
-            <>
-              <Outline.ShareIcon />
-              Menu item 2
-            </>
-          ),
-        },
-        {
-          align: 'start',
-          variant: 'transparent',
-          children: (
-            <>
-              <Outline.Cog6ToothIcon />
-              Menu item 3
-            </>
-          ),
-        },
-      ]}
+      slotSidebar={<Sidebar />}
     >
       <Toolbar
         align="space-between"
