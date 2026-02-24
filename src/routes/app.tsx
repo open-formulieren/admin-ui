@@ -5,12 +5,14 @@ import RouterErrorBoundary from '@/errors/RouterErrorBoundary';
 import {formLoader, queryClient} from '@/queryClient';
 import type {Form} from '@/types/form';
 
+import {PageId} from './constants';
 import formRoutes from './form';
 import type {RouteHandle, RouteObject} from './types';
 
 const routes: RouteObject[] = [
   // All other routes, point back to old admin
   {
+    id: PageId.HOME,
     path: '/',
     ErrorBoundary: RouterErrorBoundary,
     handle: {
@@ -20,6 +22,7 @@ const routes: RouteObject[] = [
     },
     children: [
       {
+        id: PageId.FORM_CATEGORIES,
         path: 'form-categories',
         handle: {
           breadcrumbLabel: () => (
@@ -31,6 +34,7 @@ const routes: RouteObject[] = [
         },
       },
       {
+        id: PageId.FORM_OVERVIEW,
         path: 'forms',
         handle: {
           breadcrumbLabel: () => (
@@ -42,6 +46,7 @@ const routes: RouteObject[] = [
         },
         children: [
           {
+            id: PageId.FORM_DETAIL,
             path: ':formId',
             loader: ({params}) => formLoader(queryClient, params.formId),
             handle: {
@@ -53,6 +58,7 @@ const routes: RouteObject[] = [
         ],
       },
       {
+        id: PageId.FORM_SUBMISSION_STATISTICS,
         path: 'form-submission-statistics',
         handle: {
           breadcrumbLabel: () => (
