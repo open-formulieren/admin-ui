@@ -14,10 +14,15 @@ export interface AdminSettings {
     backgroundColor?: string;
     foregroundColor?: string;
   };
+  /**
+   * The base URL of the Open Forms API.
+   */
+  apiBaseUrl: string;
 }
 
 const AdminSettingsContext = React.createContext<AdminSettings>({
   environmentInfo: {label: '', showBadge: true},
+  apiBaseUrl: '',
 });
 
 AdminSettingsContext.displayName = 'AdminSettingsContext';

@@ -51,6 +51,7 @@ export default defineConfig(({mode}) => ({
   ],
   resolve: {
     alias: {
+      '@/api-mocks': resolve(_OF_INTERNAL_dirname, 'src/api-mocks'),
       '@/components': resolve(_OF_INTERNAL_dirname, 'src/components'),
     },
   },
@@ -74,7 +75,6 @@ export default defineConfig(({mode}) => ({
     },
   },
   test: {
-    environment: 'node',
     setupFiles: './vitest.setup.ts',
     coverage: {
       provider: 'v8',
@@ -92,6 +92,7 @@ export default defineConfig(({mode}) => ({
       headless: true,
       provider: playwright({}),
       instances: [{browser: 'chromium'}],
+      screenshotFailures: false,
     },
     projects: [
       {

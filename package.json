@@ -66,6 +66,7 @@
     "eslint-plugin-react-hooks": "^6.1.1",
     "eslint-plugin-storybook": "^10.1.11",
     "msw": "^2.12.7",
+    "msw-storybook-addon": "^2.0.6",
     "npm-run-all": "^4.1.5",
     "playwright": "^1.57.0",
     "prettier": "^3.7.4",
@@ -90,5 +91,10 @@
     "@maykin-ui/admin-ui": "^3.0.0-alpha.1",
     "@tanstack/react-query": "^5.90.16",
     "react-router": "^7.12.0"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
   }
 }
