@@ -6,6 +6,7 @@ import type {RouteObject} from './types';
 const routes: RouteObject[] = [
   // All other routes, point back to old admin
   {
+    id: 'home',
     path: '/',
     handle: {
       breadcrumbLabel: () => (
@@ -14,6 +15,7 @@ const routes: RouteObject[] = [
     },
     children: [
       {
+        id: 'form-categories',
         path: 'form-categories',
         handle: {
           breadcrumbLabel: () => (
@@ -25,6 +27,7 @@ const routes: RouteObject[] = [
         },
       },
       {
+        id: 'form-overview',
         path: 'forms',
         handle: {
           breadcrumbLabel: () => (
@@ -36,6 +39,7 @@ const routes: RouteObject[] = [
         },
         children: [
           {
+            id: 'form-detail',
             path: ':formId',
             handle: {
               breadcrumbLabel: () => {
@@ -49,6 +53,7 @@ const routes: RouteObject[] = [
         ],
       },
       {
+        id: 'form-submission-statistics',
         path: 'form-submission-statistics',
         handle: {
           breadcrumbLabel: () => (

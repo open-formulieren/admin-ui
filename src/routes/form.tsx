@@ -4,6 +4,7 @@ import type {RouteObject} from './types';
 
 const routes: RouteObject[] = [
   {
+    id: 'form-design',
     path: 'design',
     handle: {
       breadcrumbLabel: () => (
@@ -15,20 +16,25 @@ const routes: RouteObject[] = [
     },
     children: [
       {
+        id: 'form-design-introduction-page',
         path: 'introduction-page',
       },
       {
+        id: 'form-design-start-page',
         path: 'start-page',
       },
       {
+        id: 'form-design-form-steps',
         path: 'form-steps',
       },
       {
+        id: 'form-design-confirmation',
         path: 'confirmation',
       },
     ],
   },
   {
+    id: 'form-logic',
     path: 'logic',
     handle: {
       breadcrumbLabel: () => (
@@ -40,17 +46,21 @@ const routes: RouteObject[] = [
     },
     children: [
       {
+        id: 'form-logic-form-rules',
         path: 'form-rules',
       },
       {
+        id: 'form-logic-library',
         path: 'library',
       },
       {
+        id: 'form-logic-user-variables',
         path: 'user-variables',
       },
     ],
   },
   {
+    id: 'form-settings',
     path: 'settings',
     handle: {
       breadcrumbLabel: () => (
@@ -62,42 +72,55 @@ const routes: RouteObject[] = [
     },
     children: [
       {
+        id: 'form-settings-general',
         path: 'general',
       },
       {
+        id: 'form-settings-authentication',
         path: 'authentication',
       },
       {
+        id: 'form-settings-availability',
         path: 'availability',
       },
       {
+        id: 'form-settings-presentation',
         path: 'presentation',
       },
       {
+        id: 'form-settings-prefill',
         path: 'prefill',
       },
       {
-        path: 'user-variables',
+        id: 'form-settings-variables',
+        path: 'variables',
       },
       {
+        id: 'form-settings-registration',
         path: 'registration',
       },
       {
+        id: 'form-settings-confirmation',
         path: 'confirmation',
       },
       {
+        id: 'form-settings-submissions',
         path: 'submissions',
       },
       {
+        id: 'form-settings-payment',
         path: 'payment',
       },
       {
+        id: 'form-settings-data-removal',
         path: 'data-removal',
       },
       {
+        id: 'form-settings-translations',
         path: 'translations',
       },
       {
+        id: 'form-settings-history',
         path: 'history',
       },
     ],
