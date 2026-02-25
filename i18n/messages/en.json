@@ -1,8 +1,58 @@
 {
+  "23y84q": {
+    "defaultMessage": "Confirmation",
+    "description": "Main navigation label 'confirmation'",
+    "originalDefault": "Confirmation"
+  },
+  "2TGIP7": {
+    "defaultMessage": "Login",
+    "description": "Main navigation label 'authentication settings'",
+    "originalDefault": "Login"
+  },
+  "2Ud2Cc": {
+    "defaultMessage": "Form rules",
+    "description": "Main navigation label 'form rules'",
+    "originalDefault": "Form rules"
+  },
   "2vFy0E": {
     "defaultMessage": "Categories",
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
+  },
+  "3dh+h1": {
+    "defaultMessage": "Translations",
+    "description": "Main navigation label 'translations settings'",
+    "originalDefault": "Translations"
+  },
+  "465GuA": {
+    "defaultMessage": "Settings",
+    "description": "Main navigation label 'form settings'",
+    "originalDefault": "Settings"
+  },
+  "4QxfrT": {
+    "defaultMessage": "Introduction page",
+    "description": "Main navigation label 'form introduction page'",
+    "originalDefault": "Introduction page"
+  },
+  "8CNXuR": {
+    "defaultMessage": "Submissions",
+    "description": "Main navigation label 'submissions settings'",
+    "originalDefault": "Submissions"
+  },
+  "91B589": {
+    "defaultMessage": "Payment",
+    "description": "Main navigation label 'payment settings'",
+    "originalDefault": "Payment"
+  },
+  "9Hn0fj": {
+    "defaultMessage": "Variables",
+    "description": "Main navigation label 'variables settings'",
+    "originalDefault": "Variables"
+  },
+  "9ereUQ": {
+    "defaultMessage": "Forms",
+    "description": "Main navigation label 'forms overview'",
+    "originalDefault": "Forms"
   },
   "BfpzoP": {
     "defaultMessage": "Scheduled form",
@@ -14,15 +64,65 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "F5wcwK": {
+    "defaultMessage": "Confirmation",
+    "description": "Main navigation label 'confirmation settings'",
+    "originalDefault": "Confirmation"
+  },
+  "FDqOKN": {
+    "defaultMessage": "Prefill",
+    "description": "Main navigation label 'prefill settings'",
+    "originalDefault": "Prefill"
+  },
+  "FVCVno": {
+    "defaultMessage": "Registration",
+    "description": "Main navigation label 'registration settings'",
+    "originalDefault": "Registration"
+  },
+  "IHI3xy": {
+    "defaultMessage": "Information",
+    "description": "Main navigation label 'general settings'",
+    "originalDefault": "Information"
+  },
   "KJFOCt": {
     "defaultMessage": "Logic",
     "description": "Route breadcrumb label for form detail logic",
     "originalDefault": "logic"
   },
+  "KvV9iL": {
+    "defaultMessage": "Form steps",
+    "description": "Main navigation label 'form steps page'",
+    "originalDefault": "Form steps"
+  },
+  "PN3JMo": {
+    "defaultMessage": "Availability",
+    "description": "Main navigation label 'availability settings'",
+    "originalDefault": "Availability"
+  },
+  "PWu0qX": {
+    "defaultMessage": "Forms",
+    "description": "Main navigation label 'form subject'",
+    "originalDefault": "Forms"
+  },
   "Qroj81": {
     "defaultMessage": "Forms",
     "description": "Route breadcrumb label for forms overview",
     "originalDefault": "forms"
+  },
+  "UIKEnY": {
+    "defaultMessage": "User variables",
+    "description": "Main navigation label 'user variables'",
+    "originalDefault": "User variables"
+  },
+  "YbQaJ0": {
+    "defaultMessage": "Library rules",
+    "description": "Main navigation label 'library rules'",
+    "originalDefault": "Library rules"
+  },
+  "ZMsrHL": {
+    "defaultMessage": "Categories",
+    "description": "Main navigation label 'form categories'",
+    "originalDefault": "Categories"
   },
   "ZiDANM": {
     "defaultMessage": "Home",
@@ -34,10 +134,45 @@
     "description": "Route breadcrumb label for form detail design",
     "originalDefault": "design"
   },
+  "csfzAx": {
+    "defaultMessage": "History",
+    "description": "Main navigation label 'history settings'",
+    "originalDefault": "History"
+  },
+  "dTtQ0W": {
+    "defaultMessage": "Forms",
+    "description": "Main navigation label 'back to forms'",
+    "originalDefault": "Forms"
+  },
   "e/VFua": {
     "defaultMessage": "Active form",
     "description": "Label for form status \"active\"",
     "originalDefault": "Active form"
+  },
+  "eJZabQ": {
+    "defaultMessage": "Add new step",
+    "description": "Main navigation label 'add form step'",
+    "originalDefault": "Add new step"
+  },
+  "f5KoHj": {
+    "defaultMessage": "Presentation",
+    "description": "Main navigation label 'presentation settings'",
+    "originalDefault": "Presentation"
+  },
+  "fGylQR": {
+    "defaultMessage": "Design",
+    "description": "Main navigation label 'form design'",
+    "originalDefault": "Design"
+  },
+  "fdVayh": {
+    "defaultMessage": "Start page",
+    "description": "Main navigation label 'form start page'",
+    "originalDefault": "Start page"
+  },
+  "jThIo3": {
+    "defaultMessage": "Form statistics",
+    "description": "Main navigation label 'form statistics'",
+    "originalDefault": "Form statistics"
   },
   "pJ2Kxl": {
     "defaultMessage": "Form in maintenance mode",
@@ -49,9 +184,24 @@
     "description": "Route breadcrumb label for form detail settings",
     "originalDefault": "settings"
   },
+  "qF9GQ2": {
+    "defaultMessage": "Logic",
+    "description": "Main navigation label 'form logic'",
+    "originalDefault": "Logic"
+  },
+  "t2hC8j": {
+    "defaultMessage": "Add new logic rule",
+    "description": "Main navigation label 'add logic rule'",
+    "originalDefault": "Add new logic rule"
+  },
   "t5YtWB": {
     "defaultMessage": "Inactive form",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "xGHW+D": {
+    "defaultMessage": "Data removal",
+    "description": "Main navigation label 'data removal settings'",
+    "originalDefault": "Data removal"
   }
 }
