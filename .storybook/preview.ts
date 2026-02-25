@@ -10,6 +10,9 @@ import {reactIntl} from './reactIntl';
 
 initialize({
   onUnhandledRequest: 'error',
+  serviceWorker: {
+    url: './mockServiceWorker.js',
+  },
   quiet: true, // don't output logs
 });
 
