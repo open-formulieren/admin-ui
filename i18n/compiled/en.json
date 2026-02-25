@@ -1,8 +1,68 @@
 {
+  "23y84q": [
+    {
+      "type": 0,
+      "value": "Confirmation"
+    }
+  ],
+  "2TGIP7": [
+    {
+      "type": 0,
+      "value": "Login"
+    }
+  ],
+  "2Ud2Cc": [
+    {
+      "type": 0,
+      "value": "Form rules"
+    }
+  ],
   "2vFy0E": [
     {
       "type": 0,
       "value": "Categories"
+    }
+  ],
+  "3dh+h1": [
+    {
+      "type": 0,
+      "value": "Translations"
+    }
+  ],
+  "465GuA": [
+    {
+      "type": 0,
+      "value": "Settings"
+    }
+  ],
+  "4QxfrT": [
+    {
+      "type": 0,
+      "value": "Introduction page"
+    }
+  ],
+  "8CNXuR": [
+    {
+      "type": 0,
+      "value": "Submissions"
+    }
+  ],
+  "91B589": [
+    {
+      "type": 0,
+      "value": "Payment"
+    }
+  ],
+  "9Hn0fj": [
+    {
+      "type": 0,
+      "value": "Variables"
+    }
+  ],
+  "9ereUQ": [
+    {
+      "type": 0,
+      "value": "Forms"
     }
   ],
   "BfpzoP": [
@@ -17,16 +77,76 @@
       "value": "Form submission statistics"
     }
   ],
+  "F5wcwK": [
+    {
+      "type": 0,
+      "value": "Confirmation"
+    }
+  ],
+  "FDqOKN": [
+    {
+      "type": 0,
+      "value": "Prefill"
+    }
+  ],
+  "FVCVno": [
+    {
+      "type": 0,
+      "value": "Registration"
+    }
+  ],
+  "IHI3xy": [
+    {
+      "type": 0,
+      "value": "Information"
+    }
+  ],
   "KJFOCt": [
     {
       "type": 0,
       "value": "Logic"
     }
   ],
+  "KvV9iL": [
+    {
+      "type": 0,
+      "value": "Form steps"
+    }
+  ],
+  "PN3JMo": [
+    {
+      "type": 0,
+      "value": "Availability"
+    }
+  ],
+  "PWu0qX": [
+    {
+      "type": 0,
+      "value": "Forms"
+    }
+  ],
   "Qroj81": [
     {
       "type": 0,
       "value": "Forms"
+    }
+  ],
+  "UIKEnY": [
+    {
+      "type": 0,
+      "value": "User variables"
+    }
+  ],
+  "YbQaJ0": [
+    {
+      "type": 0,
+      "value": "Library rules"
+    }
+  ],
+  "ZMsrHL": [
+    {
+      "type": 0,
+      "value": "Categories"
     }
   ],
   "ZiDANM": [
@@ -41,10 +161,52 @@
       "value": "Design"
     }
   ],
+  "csfzAx": [
+    {
+      "type": 0,
+      "value": "History"
+    }
+  ],
+  "dTtQ0W": [
+    {
+      "type": 0,
+      "value": "Forms"
+    }
+  ],
   "e/VFua": [
     {
       "type": 0,
       "value": "Active form"
+    }
+  ],
+  "eJZabQ": [
+    {
+      "type": 0,
+      "value": "Add new step"
+    }
+  ],
+  "f5KoHj": [
+    {
+      "type": 0,
+      "value": "Presentation"
+    }
+  ],
+  "fGylQR": [
+    {
+      "type": 0,
+      "value": "Design"
+    }
+  ],
+  "fdVayh": [
+    {
+      "type": 0,
+      "value": "Start page"
+    }
+  ],
+  "jThIo3": [
+    {
+      "type": 0,
+      "value": "Form statistics"
     }
   ],
   "pJ2Kxl": [
@@ -59,10 +221,28 @@
       "value": "Settings"
     }
   ],
+  "qF9GQ2": [
+    {
+      "type": 0,
+      "value": "Logic"
+    }
+  ],
+  "t2hC8j": [
+    {
+      "type": 0,
+      "value": "Add new logic rule"
+    }
+  ],
   "t5YtWB": [
     {
       "type": 0,
       "value": "Inactive form"
+    }
+  ],
+  "xGHW+D": [
+    {
+      "type": 0,
+      "value": "Data removal"
     }
   ]
 }

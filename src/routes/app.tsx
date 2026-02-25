@@ -1,39 +1,45 @@
+import {FormattedMessage} from 'react-intl';
+
 import formRoutes from './form';
 import type {RouteObject} from './types';
 
 const routes: RouteObject[] = [
   // All other routes, point back to old admin
   {
+    id: 'home',
     path: '/',
     handle: {
-      breadcrumbLabel: intl =>
-        intl.formatMessage({
-          description: 'Route breadcrumb label for home',
-          defaultMessage: 'home',
-        }),
+      breadcrumbLabel: () => (
+        <FormattedMessage description="Route breadcrumb label for home" defaultMessage="home" />
+      ),
     },
     children: [
       {
+        id: 'form-categories',
         path: 'form-categories',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for form categories',
-              defaultMessage: 'categories',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for form categories"
+              defaultMessage="categories"
+            />
+          ),
         },
       },
       {
+        id: 'form-overview',
         path: 'forms',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for forms overview',
-              defaultMessage: 'forms',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for forms overview"
+              defaultMessage="forms"
+            />
+          ),
         },
         children: [
           {
+            id: 'form-detail',
             path: ':formId',
             handle: {
               breadcrumbLabel: () => {
@@ -47,13 +53,15 @@ const routes: RouteObject[] = [
         ],
       },
       {
+        id: 'form-submission-statistics',
         path: 'form-submission-statistics',
         handle: {
-          breadcrumbLabel: intl =>
-            intl.formatMessage({
-              description: 'Route breadcrumb label for form submission statistics',
-              defaultMessage: 'form submission statistics',
-            }),
+          breadcrumbLabel: () => (
+            <FormattedMessage
+              description="Route breadcrumb label for form submission statistics"
+              defaultMessage="form submission statistics"
+            />
+          ),
         },
       },
     ],

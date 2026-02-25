@@ -1,8 +1,68 @@
 {
+  "23y84q": [
+    {
+      "type": 0,
+      "value": "Bevestiging"
+    }
+  ],
+  "2TGIP7": [
+    {
+      "type": 0,
+      "value": "Inloggen"
+    }
+  ],
+  "2Ud2Cc": [
+    {
+      "type": 0,
+      "value": "Formulier regels"
+    }
+  ],
   "2vFy0E": [
     {
       "type": 0,
       "value": "Categorieën"
+    }
+  ],
+  "3dh+h1": [
+    {
+      "type": 0,
+      "value": "Vertalingen"
+    }
+  ],
+  "465GuA": [
+    {
+      "type": 0,
+      "value": "Instellingen"
+    }
+  ],
+  "4QxfrT": [
+    {
+      "type": 0,
+      "value": "Introductiepagina"
+    }
+  ],
+  "8CNXuR": [
+    {
+      "type": 0,
+      "value": "Inzendingen"
+    }
+  ],
+  "91B589": [
+    {
+      "type": 0,
+      "value": "Betaling"
+    }
+  ],
+  "9Hn0fj": [
+    {
+      "type": 0,
+      "value": "Variabelen"
+    }
+  ],
+  "9ereUQ": [
+    {
+      "type": 0,
+      "value": "Formulieren"
     }
   ],
   "BfpzoP": [
@@ -17,16 +77,76 @@
       "value": "Inzendingstatistieken"
     }
   ],
+  "F5wcwK": [
+    {
+      "type": 0,
+      "value": "Bevestiging"
+    }
+  ],
+  "FDqOKN": [
+    {
+      "type": 0,
+      "value": "Prefill"
+    }
+  ],
+  "FVCVno": [
+    {
+      "type": 0,
+      "value": "Registratie"
+    }
+  ],
+  "IHI3xy": [
+    {
+      "type": 0,
+      "value": "Informatie"
+    }
+  ],
   "KJFOCt": [
     {
       "type": 0,
       "value": "Logica"
     }
   ],
+  "KvV9iL": [
+    {
+      "type": 0,
+      "value": "Formulier stappen"
+    }
+  ],
+  "PN3JMo": [
+    {
+      "type": 0,
+      "value": "Beschikbaarheid"
+    }
+  ],
+  "PWu0qX": [
+    {
+      "type": 0,
+      "value": "Formulieren"
+    }
+  ],
   "Qroj81": [
     {
       "type": 0,
       "value": "Formulieren"
+    }
+  ],
+  "UIKEnY": [
+    {
+      "type": 0,
+      "value": "Gebruikersvariabelen"
+    }
+  ],
+  "YbQaJ0": [
+    {
+      "type": 0,
+      "value": "Bibliotheek regels"
+    }
+  ],
+  "ZMsrHL": [
+    {
+      "type": 0,
+      "value": "Categorieën"
     }
   ],
   "ZiDANM": [
@@ -41,10 +161,52 @@
       "value": "Ontwerpen"
     }
   ],
+  "csfzAx": [
+    {
+      "type": 0,
+      "value": "Geschiedenis"
+    }
+  ],
+  "dTtQ0W": [
+    {
+      "type": 0,
+      "value": "Formulieren"
+    }
+  ],
   "e/VFua": [
     {
       "type": 0,
       "value": "Formulier actief"
+    }
+  ],
+  "eJZabQ": [
+    {
+      "type": 0,
+      "value": "Nieuwe stap toevoegen"
+    }
+  ],
+  "f5KoHj": [
+    {
+      "type": 0,
+      "value": "Weergave"
+    }
+  ],
+  "fGylQR": [
+    {
+      "type": 0,
+      "value": "Ontwerpen"
+    }
+  ],
+  "fdVayh": [
+    {
+      "type": 0,
+      "value": "Startpagina"
+    }
+  ],
+  "jThIo3": [
+    {
+      "type": 0,
+      "value": "Inzendingstatistieken"
     }
   ],
   "pJ2Kxl": [
@@ -59,10 +221,28 @@
       "value": "Instellingen"
     }
   ],
+  "qF9GQ2": [
+    {
+      "type": 0,
+      "value": "Logica"
+    }
+  ],
+  "t2hC8j": [
+    {
+      "type": 0,
+      "value": "Nieuwe logica regel toevoegen"
+    }
+  ],
   "t5YtWB": [
     {
       "type": 0,
       "value": "Formulier niet actief"
+    }
+  ],
+  "xGHW+D": [
+    {
+      "type": 0,
+      "value": "Bewaartermijn"
     }
   ]
 }
