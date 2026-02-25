@@ -9,7 +9,7 @@ import {withAdminSettingsProvider} from '@/sb-decorators';
 import {reactIntl} from './reactIntl';
 
 initialize({
-  onUnhandledRequest: 'error',
+  onUnhandledRequest: 'bypass',
   quiet: true, // don't output logs
 });
 
