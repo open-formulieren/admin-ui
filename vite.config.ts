@@ -111,7 +111,7 @@ export default defineConfig(({mode}) => ({
         ],
         test: {
           name: 'storybook',
-          setupFiles: ['./vitest.setup.ts'],
+          setupFiles: ['./vitest.setup.storybook.ts'],
         },
       },
     ],

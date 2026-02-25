@@ -4,8 +4,8 @@ import type {
   NonIndexRouteObject as RRNonIndexRouteObject,
 } from 'react-router';
 
-export interface RouteHandle {
-  breadcrumbLabel?: (intl: IntlShape, loaderData: unknown) => string;
+export interface RouteHandle<T> {
+  breadcrumbLabel?: (intl: IntlShape, loaderData: T) => string;
 }
 
 /**
@@ -17,7 +17,7 @@ export interface RouteHandle {
  * 'handle' property is typed correctly.
  */
 type IndexRouteObject = Omit<RRIndexRouteObject, 'handle'> & {
-  handle?: RouteHandle;
+  handle?: RouteHandle<unknown>;
 };
 
 /**
@@ -35,7 +35,7 @@ type IndexRouteObject = Omit<RRIndexRouteObject, 'handle'> & {
  * for all routes.
  */
 type NonIndexRouteObject = Omit<RRNonIndexRouteObject, 'handle' | 'children'> & {
-  handle?: RouteHandle;
+  handle?: RouteHandle<unknown>;
   children?: RouteObject[];
 };
 
