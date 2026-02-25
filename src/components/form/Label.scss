@@ -1,0 +1,16 @@
+.openforms-label {
+  // Centering the label and the required indicator
+  display: flex;
+  align-items: center;
+  gap: var(--sizes-spacing-xs-v, 8px);
+
+  // Updating the typography styles for the label, using admin-ui variables
+  font-size: var(--typography-font-size-body-s, 14px);
+  line-height: var(--typography-line-height-body-s, 24px);
+
+  &__required-indicator {
+    color: var(--typography-color-muted, #595959);
+    font-weight: var(--typography-font-weight-normal, 400);
+    font-size: var(--typography-font-size-body-xs, 12px);
+  }
+}

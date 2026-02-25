@@ -4,6 +4,11 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "9eNQrq": {
+    "defaultMessage": "{isRequired, select, true {{label} <span>Verplicht</span>} other {{label}} }",
+    "description": "Form field label content/wrapper",
+    "originalDefault": "{isRequired, select, true {{label} <span>Required</span>} other {{label}} }"
+  },
   "BfpzoP": {
     "defaultMessage": "Formulier ingepland",
     "description": "Label for form status \"scheduled\"",
