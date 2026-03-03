@@ -1,0 +1,6 @@
+.openforms-form-field {
+  display: flex;
+  flex-direction: column;
+  align-items: baseline;
+  gap: var(--sizes-spacing-xs-v, 8px);
+}

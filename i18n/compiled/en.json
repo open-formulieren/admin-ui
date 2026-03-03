@@ -5,6 +5,44 @@
       "value": "Categories"
     }
   ],
+  "9eNQrq": [
+    {
+      "options": {
+        "other": {
+          "value": [
+            {
+              "type": 1,
+              "value": "label"
+            }
+          ]
+        },
+        "true": {
+          "value": [
+            {
+              "type": 1,
+              "value": "label"
+            },
+            {
+              "type": 0,
+              "value": " "
+            },
+            {
+              "children": [
+                {
+                  "type": 0,
+                  "value": "Required"
+                }
+              ],
+              "type": 8,
+              "value": "span"
+            }
+          ]
+        }
+      },
+      "type": 5,
+      "value": "isRequired"
+    }
+  ],
   "BfpzoP": [
     {
       "type": 0,
