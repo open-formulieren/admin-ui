@@ -1,4 +1,5 @@
 import FormLayout from '@/components/layout/FormLayout';
+import RouterErrorBoundary from '@/errors/RouterErrorBoundary';
 import {formLoader, queryClient} from '@/queryClient';
 import type {Form} from '@/types/form';
 
@@ -9,6 +10,7 @@ const routes: RouteObject[] = [
   // All other routes, point back to old admin
   {
     path: '/',
+    ErrorBoundary: RouterErrorBoundary,
     handle: {
       breadcrumbLabel: intl =>
         intl.formatMessage({
