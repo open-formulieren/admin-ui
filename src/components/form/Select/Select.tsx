@@ -4,6 +4,7 @@ import {useField, useFormikContext} from 'formik';
 import {useId} from 'react';
 
 import Description from '../Description';
+import FieldDescription from '../FieldDescription';
 import FormField from '../FormField';
 import Label from '../Label';
 
@@ -57,12 +58,15 @@ const Select: React.FC<SelectProps> = ({
 
   return (
     <FormField>
-      <Label id={id} isRequired={isRequired}>
-        {label}
-      </Label>
-      {descriptionId && <Description id={descriptionId}>{description}</Description>}
+      <FieldDescription>
+        <Label id={id} isRequired={isRequired}>
+          {label}
+        </Label>
 
-      {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
+        {descriptionId && <Description id={descriptionId}>{description}</Description>}
+        {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
+      </FieldDescription>
+
       <MyknSelect
         value={value}
         {...props}
