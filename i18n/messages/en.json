@@ -4,6 +4,11 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "2wkqV6": {
+    "defaultMessage": "Preview",
+    "description": "Preview button text",
+    "originalDefault": "Preview"
+  },
   "6UFbVC": {
     "defaultMessage": "There was an authentication problem.",
     "description": "'Not authenticated' error message",
@@ -48,6 +53,11 @@
     "defaultMessage": "Forms",
     "description": "Route breadcrumb label for forms overview",
     "originalDefault": "forms"
+  },
+  "RT8KNi": {
+    "defaultMessage": "Save",
+    "description": "Save button text",
+    "originalDefault": "Save"
   },
   "ZiDANM": {
     "defaultMessage": "Home",
