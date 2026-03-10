@@ -1,5 +1,7 @@
+import {Toolbar} from '@maykin-ui/admin-ui';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {reactRouterParameters, withRouter} from 'storybook-addon-remix-react-router';
+import {expect, within} from 'storybook/test';
 
 import BasicLayout from '@/components/layout/BasicLayout';
 import type {RouteHandle} from '@/routes/types';
@@ -95,5 +97,31 @@ export const WithDynamicBreadcrumbs: Story = {
         ],
       },
     }),
+  },
+};
+
+export const WithComponentProperties: Story = {
+  args: {
+    children: <SimplePageContent />,
+    footer: (
+      <Toolbar
+        pad
+        variant="alt"
+        align="start"
+        items={[
+          {
+            variant: 'primary',
+            children: 'Footer action',
+          },
+        ]}
+      />
+    ),
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    // Both the children and footer content should be rendered
+    expect(canvas.getByText(/Lorem ipsum dolor sit amet/)).toBeVisible();
+    expect(canvas.getByRole('button', {name: 'Footer action'})).toBeVisible();
   },
 };
