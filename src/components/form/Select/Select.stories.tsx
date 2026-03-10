@@ -124,3 +124,28 @@ export const WithError: Story = {
     },
   },
 };
+
+export const KitchenSink: Story = {
+  args: {
+    isRequired: true,
+    description: 'Select description',
+  },
+  parameters: {
+    formik: {
+      initialErrors: {
+        select: 'Invalid!',
+      },
+      initialTouched: {
+        select: true,
+      },
+    },
+  },
+  play: ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    // Expect all textual content to be shown
+    expect(canvas.getByText('Required')).toBeVisible();
+    expect(canvas.getByText('Select description')).toBeVisible();
+    expect(canvas.getByText('Invalid!')).toBeVisible();
+  },
+};

@@ -82,3 +82,28 @@ export const WithError: Story = {
     expect(canvas.getByText('Invalid!')).toBeVisible();
   },
 };
+
+export const KitchenSink: Story = {
+  args: {
+    isRequired: true,
+    description: 'Textfield description',
+  },
+  parameters: {
+    formik: {
+      initialErrors: {
+        textfield: 'Invalid!',
+      },
+      initialTouched: {
+        textfield: true,
+      },
+    },
+  },
+  play: ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    // Expect all textual content to be shown
+    expect(canvas.getByText('Required')).toBeVisible();
+    expect(canvas.getByText('Textfield description')).toBeVisible();
+    expect(canvas.getByText('Invalid!')).toBeVisible();
+  },
+};
