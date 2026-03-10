@@ -1,8 +1,12 @@
-import {Formik} from 'formik';
+import {Button, Outline, Toolbar} from '@maykin-ui/admin-ui';
+import {Formik, useFormikContext} from 'formik';
+import {FormattedMessage} from 'react-intl';
 import {Outlet, useLoaderData} from 'react-router';
 
 import {queryClient, useFormMutation} from '@/queryClient';
 import type {Form} from '@/types/form';
+
+import BasicLayout from './BasicLayout';
 
 /**
  * React-router layout component for fetching and handling Form details
@@ -21,7 +25,9 @@ const FormLayout = () => {
 
   return (
     <FormLayoutInner initialValues={form} onSubmit={handleSubmit}>
-      <Outlet />
+      <BasicLayout footer={<FormLayoutFooter />}>
+        <Outlet />
+      </BasicLayout>
     </FormLayoutInner>
   );
 };
@@ -53,5 +59,40 @@ export const FormLayoutInner: React.FC<React.PropsWithChildren<FormLayoutInnerPr
     {children}
   </Formik>
 );
+
+const FormLayoutFooter: React.FC = () => {
+  const {submitForm} = useFormikContext();
+
+  const togglePreview = () => {
+    // @TODO
+    alert('Preview not yet implemented');
+  };
+
+  return (
+    <Toolbar
+      pad
+      variant="alt"
+      align="start"
+      items={[
+        <Button
+          key="save-button"
+          variant="primary"
+          type="button"
+          onClick={async e => {
+            e.preventDefault();
+            await submitForm();
+          }}
+        >
+          <Outline.BookmarkSquareIcon />
+          <FormattedMessage description="Save button text" defaultMessage="Save" />
+        </Button>,
+        <Button key="preview-button" variant="secondary" onClick={togglePreview}>
+          <Outline.EyeIcon />
+          <FormattedMessage description="Preview button text" defaultMessage="Preview" />
+        </Button>,
+      ]}
+    />
+  );
+};
 
 export default FormLayout;

@@ -1,7 +1,6 @@
-import {Button} from '@maykin-ui/admin-ui';
 import type {Meta, StoryObj} from '@storybook/react-vite';
 import {Field, Form} from 'formik';
-import {expect, fn, userEvent, waitFor, within} from 'storybook/test';
+import {expect, fireEvent, fn, userEvent, waitFor, within} from 'storybook/test';
 
 import {buildForm, mockFormDetailsGet, mockFormDetailsPut} from '@/api-mocks/form';
 import {withFormLayout} from '@/sb-decorators';
@@ -10,14 +9,8 @@ import {withFormLayout} from '@/sb-decorators';
 const FormPageContent: React.FC = () => {
   return (
     <Form>
-      <div>
-        <label htmlFor="form-name">Form name</label>
-        <Field id="form-name" name="name" autoComplete="false" />
-      </div>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <label htmlFor="form-name">Form name</label>
+      <Field id="form-name" name="name" autoComplete="false" />
     </Form>
   );
 };
@@ -53,7 +46,10 @@ export const Default: Story = {
     await userEvent.type(formNameInput, 'My awesome form');
     expect(formNameInput).toHaveValue('My awesome form');
 
-    await userEvent.click(await canvas.findByText('Submit'));
+    // Using fireEvent.click instead of userEvent.click because userEvent.click doesn't
+    // actually fire a click event, which we need to trigger the form submission.
+    await fireEvent.click(canvas.getByRole('button', {name: 'Save'}));
+
     await waitFor(() => {
       expect(parameters.formDetailPages.onMutate).toBeCalled();
 
