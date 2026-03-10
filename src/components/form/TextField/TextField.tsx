@@ -1,8 +1,10 @@
 import {ErrorMessage, Input} from '@maykin-ui/admin-ui';
+import {clsx} from 'clsx';
 import {useField, useFormikContext} from 'formik';
 import {useId} from 'react';
 
 import Description from '../Description';
+import FieldDescription from '../FieldDescription';
 import FormField from '../FormField';
 import Label from '../Label';
 
@@ -37,16 +39,19 @@ const TextField: React.FC<TextFieldProps> = ({name, label, description, isRequir
   const errorMessageId = invalid ? `${id}-error-message` : undefined;
   const descriptionId = description ? `${id}-description` : undefined;
 
-  const ariaDescribedBy = [descriptionId, errorMessageId].filter(Boolean).join(' ') || undefined;
+  const ariaDescribedBy = clsx(descriptionId, errorMessageId);
 
   return (
     <FormField>
-      <Label id={id} isRequired={isRequired}>
-        {label}
-      </Label>
-      {descriptionId && <Description id={descriptionId}>{description}</Description>}
+      <FieldDescription>
+        <Label id={id} isRequired={isRequired}>
+          {label}
+        </Label>
 
-      {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
+        {descriptionId && <Description id={descriptionId}>{description}</Description>}
+        {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
+      </FieldDescription>
+
       <Input
         id={id}
         aria-invalid={invalid}

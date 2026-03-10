@@ -1,5 +1,6 @@
 import type {Option} from '@maykin-ui/admin-ui';
 import {ErrorMessage, Select as MyknSelect} from '@maykin-ui/admin-ui';
+import {clsx} from 'clsx';
 import {useField, useFormikContext} from 'formik';
 import {useId} from 'react';
 
@@ -54,7 +55,7 @@ const Select: React.FC<SelectProps> = ({
   const errorMessageId = invalid ? `${id}-error-message` : undefined;
   const descriptionId = description ? `${id}-description` : undefined;
 
-  const ariaDescribedBy = [descriptionId, errorMessageId].filter(Boolean).join(' ') || undefined;
+  const ariaDescribedBy = clsx(descriptionId, errorMessageId) || undefined;
 
   return (
     <FormField>
