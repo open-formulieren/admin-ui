@@ -1,5 +1,4 @@
-import type {Option} from '@maykin-ui/admin-ui';
-import {ErrorMessage, Select as MyknSelect} from '@maykin-ui/admin-ui';
+import {ErrorMessage, Input} from '@maykin-ui/admin-ui';
 import {clsx} from 'clsx';
 import {useField, useFormikContext} from 'formik';
 import {useId} from 'react';
@@ -9,7 +8,7 @@ import FieldDescription from '../FieldDescription';
 import FormField from '../FormField';
 import Label from '../Label';
 
-export interface SelectProps {
+export interface TextFieldProps {
   /**
    * The name of the form field/input, used to set/track the field value in the form state.
    */
@@ -26,27 +25,12 @@ export interface SelectProps {
    */
   description?: React.ReactNode;
   /**
-   * Available options for the select.
-   */
-  options: Option[];
-  /**
-   * Allow multiple options selection or not.
-   */
-  isMulti?: boolean;
-  /**
    * Required fields get additional markup/styling to indicate this validation requirement.
    */
   isRequired?: boolean;
 }
 
-const Select: React.FC<SelectProps> = ({
-  name,
-  label,
-  description,
-  options,
-  isMulti = false,
-  isRequired = false,
-}) => {
+const TextField: React.FC<TextFieldProps> = ({name, label, description, isRequired = false}) => {
   const {validateField} = useFormikContext();
   const [{value, ...props}, {error = '', touched}] = useField(name);
   const id = useId();
@@ -55,7 +39,7 @@ const Select: React.FC<SelectProps> = ({
   const errorMessageId = invalid ? `${id}-error-message` : undefined;
   const descriptionId = description ? `${id}-description` : undefined;
 
-  const ariaDescribedBy = clsx(descriptionId, errorMessageId) || undefined;
+  const ariaDescribedBy = clsx(descriptionId, errorMessageId);
 
   return (
     <FormField>
@@ -68,16 +52,15 @@ const Select: React.FC<SelectProps> = ({
         {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
       </FieldDescription>
 
-      <MyknSelect
-        value={value}
-        {...props}
+      <Input
         id={id}
-        options={options}
         aria-invalid={invalid}
         aria-describedby={ariaDescribedBy}
-        multiple={isMulti}
         required={isRequired}
-        onBlur={async () => {
+        value={value ?? ''}
+        {...props}
+        onBlur={async event => {
+          props.onBlur(event);
           await validateField(name);
         }}
       />
@@ -85,4 +68,4 @@ const Select: React.FC<SelectProps> = ({
   );
 };
 
-export default Select;
+export default TextField;
