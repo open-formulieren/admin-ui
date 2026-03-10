@@ -1,0 +1,5 @@
+.openforms-field-description {
+  display: flex;
+  flex-direction: column;
+  gap: calc(var(--sizes-spacing-xs-v, 8px) / 2);
+}
