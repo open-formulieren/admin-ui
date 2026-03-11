@@ -1,5 +1,5 @@
 import {Accordion, Button, Input, Outline, Toolbar} from '@maykin-ui/admin-ui';
-import {FormattedMessage} from 'react-intl';
+import {FormattedMessage, useIntl} from 'react-intl';
 import {generatePath, useMatches} from 'react-router';
 
 import {PageId} from '@/routes/constants';
@@ -8,8 +8,19 @@ import NavItem from '../NavItem';
 import type {MenuLevelProps} from '../types';
 
 const SearchInput: React.FC = () => {
+  const intl = useIntl();
   // @TODO search input logic
-  return <Input type="text" placeholder="Search" icon={<Outline.MagnifyingGlassIcon />} />;
+  return (
+    <Input
+      type="text"
+      placeholder="Search"
+      aria-label={intl.formatMessage({
+        description: 'Settings navigation search input aria label',
+        defaultMessage: 'Search in settings',
+      })}
+      icon={<Outline.MagnifyingGlassIcon />}
+    />
+  );
 };
 
 const AddFormStep: React.FC = () => {
