@@ -1,9 +1,10 @@
 import {Button} from '@maykin-ui/admin-ui';
 import type {Decorator} from '@storybook/react-vite';
 import {Form, Formik} from 'formik';
+import {RouterProvider, createMemoryRouter} from 'react-router';
 import {fn} from 'storybook/test';
 
-import {BASE_URL} from '@/api-mocks';
+import {BASE_URL, mswWorker} from '@/api-mocks';
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
 import {sessionExpiresAt} from '@/guard/session/session-expiry';
 
@@ -75,4 +76,27 @@ export const withSessionExpiry: Decorator = (Story, {parameters}) => {
   });
 
   return <Story />;
+};
+
+/**
+ * A decorator that sets up MSW handlers before creating the React Router.
+ *
+ * When requests are performed using the React-router loader, the regular WithRouter
+ * initializes the msw handlers after the loader request. This decorator ensures that the
+ * MSW handlers are registered before the router is created.
+ */
+export const withMswRouter: Decorator = (_, context) => {
+  const storyHandlers = context.parameters?.msw?.handlers ?? [];
+  const reactRouter = context.parameters?.reactRouter ?? {};
+
+  // Register story handlers BEFORE router is created
+  if (storyHandlers.length > 0) {
+    mswWorker.use(...storyHandlers);
+  }
+
+  const router = createMemoryRouter([reactRouter.routing], {
+    initialEntries: [reactRouter.location.path ?? '/'],
+  });
+
+  return <RouterProvider router={router} />;
 };
