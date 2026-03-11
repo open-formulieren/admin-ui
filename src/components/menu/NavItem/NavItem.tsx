@@ -19,9 +19,9 @@ const NavItem: React.FC<React.PropsWithChildren<NavItemProps>> = ({
 
   return (
     <Button
-      key="back-to-forms-overview"
       {...buttonProps}
       align={buttonProps?.align || 'start'}
+      aria-current={isActive ? 'page' : undefined}
       // @TODO The active variant should be changed to 'accent'. Needs new admin-ui release
       variant={buttonProps?.variant || (isActive ? 'secondary' : 'transparent')}
       onClick={e => {
