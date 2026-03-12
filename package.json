@@ -88,7 +88,7 @@
     "vitest-browser-react": "^2.0.2"
   },
   "dependencies": {
-    "@maykin-ui/admin-ui": "^3.0.0-alpha.1",
+    "@maykin-ui/admin-ui": "^3.0.0-alpha.5",
     "@tanstack/react-query": "^5.90.16",
     "clsx": "^2.1.1",
     "formik": "^2.4.9",
