@@ -14,7 +14,7 @@ export const formLoader = (
   return queryClient.ensureQueryData({
     queryKey: getFormDetailsQueryKey(formId),
     queryFn: async () => {
-      const response = await apiCall(`${BASE_URL}form/${formId}`);
+      const response = await apiCall(`${BASE_URL}v3/form/${formId}`);
       if (response.ok) return response.json();
 
       if (response.status === 404) {
@@ -29,7 +29,7 @@ export const formLoader = (
 export const useFormMutation = (queryClient: QueryClient, formId: string) => {
   return useMutation<Form, Error, Form, {previous?: Form}>({
     mutationFn: async newFormDetails => {
-      const response = await apiCall(`${BASE_URL}form/${formId}`, {
+      const response = await apiCall(`${BASE_URL}v3/form/${formId}`, {
         method: 'PUT',
         body: JSON.stringify(newFormDetails),
       });
