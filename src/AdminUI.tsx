@@ -1,6 +1,6 @@
 import '@maykin-ui/admin-ui/style';
-import '@maykin-ui/admin-ui/style/themes/black-night.css';
-import '@maykin-ui/admin-ui/style/themes/purple-haze.css';
+import '@maykin-ui/admin-ui/style/themes/paint-it-black.css';
+import '@maykin-ui/admin-ui/style/themes/purple-rain.css';
 import React from 'react';
 import {RouterProvider, createBrowserRouter} from 'react-router';
 
