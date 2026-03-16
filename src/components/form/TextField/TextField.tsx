@@ -28,9 +28,19 @@ export interface TextFieldProps {
    * Required fields get additional markup/styling to indicate this validation requirement.
    */
   isRequired?: boolean;
+  /**
+   * Readonly fields get marked as such in an accessible manner.
+   */
+  isReadOnly?: boolean;
 }
 
-const TextField: React.FC<TextFieldProps> = ({name, label, description, isRequired = false}) => {
+const TextField: React.FC<TextFieldProps> = ({
+  name,
+  label,
+  description,
+  isRequired = false,
+  isReadOnly = false,
+}) => {
   const {validateField} = useFormikContext();
   const [{value, ...props}, {error = '', touched}] = useField(name);
   const id = useId();
@@ -59,6 +69,7 @@ const TextField: React.FC<TextFieldProps> = ({name, label, description, isRequir
         required={isRequired}
         value={value ?? ''}
         {...props}
+        readOnly={isReadOnly}
         onBlur={async event => {
           props.onBlur(event);
           await validateField(name);
