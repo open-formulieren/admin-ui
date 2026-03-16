@@ -30,6 +30,31 @@ export const Required: Story = {
   args: {
     isRequired: true,
   },
+  play: ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    // The field has 'Required' as part of its label content, and the input has
+    // the attribute 'required'
+    expect(canvas.getByText('Required')).toBeVisible();
+    expect(canvas.getByLabelText('Textfield label Required')).toHaveAttribute('required');
+  },
+};
+
+export const ReadOnly: Story = {
+  args: {
+    isReadOnly: true,
+  },
+  play: async ({canvasElement}) => {
+    const canvas = within(canvasElement);
+
+    // The input has the accessible 'readonly' attribute
+    const textInput = canvas.getByLabelText('Textfield label');
+    expect(textInput).toHaveAttribute('readonly');
+
+    // Typing in the input shouldn't change its content
+    await userEvent.type(textInput, 'this text should not be added');
+    expect(textInput).toHaveTextContent('');
+  },
 };
 
 export const WithDescription: Story = {
