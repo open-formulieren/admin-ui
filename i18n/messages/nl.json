@@ -20,6 +20,11 @@
     "description": "Form field label content/wrapper",
     "originalDefault": "{isRequired, select, true {{label} <span>Required</span>} other {{label}} }"
   },
+  "AuDlLe": {
+    "defaultMessage": "Informatie",
+    "description": "form detail information settings page title",
+    "originalDefault": "Information"
+  },
   "BfpzoP": {
     "defaultMessage": "Formulier ingepland",
     "description": "Label for form status \"scheduled\"",
@@ -30,10 +35,20 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "Fm7wN7": {
+    "defaultMessage": "URL-deel",
+    "description": "Form detail field 'slug' label",
+    "originalDefault": "Slug"
+  },
   "JX8BYx": {
     "defaultMessage": "Er ging helaas iets fout!",
     "description": "'Generic' error message",
     "originalDefault": "Unfortunately something went wrong!"
+  },
+  "K1cg9S": {
+    "defaultMessage": "Onderstaande ook te zien voor invuller",
+    "description": "form detail information settings page 'also for citizen' settings",
+    "originalDefault": "These settings are also visible for citizens"
   },
   "KJFOCt": {
     "defaultMessage": "Logica",
@@ -65,6 +80,21 @@
     "description": "Save button text",
     "originalDefault": "Save"
   },
+  "SisPrZ": {
+    "defaultMessage": "Categorie",
+    "description": "Form detail field 'category' label",
+    "originalDefault": "Category"
+  },
+  "WSiYMn": {
+    "defaultMessage": "Uniek ID",
+    "description": "Form detail field 'uuid' label",
+    "originalDefault": "Unique ID"
+  },
+  "WzjRYh": {
+    "defaultMessage": "Interne naam",
+    "description": "Form detail field 'internalName' label",
+    "originalDefault": "Internal name"
+  },
   "ZiDANM": {
     "defaultMessage": "Home",
     "description": "Route breadcrumb label for home",
@@ -74,6 +104,11 @@
     "defaultMessage": "Ontwerpen",
     "description": "Route breadcrumb label for form detail design",
     "originalDefault": "design"
+  },
+  "d1gRNB": {
+    "defaultMessage": "Formulier tussentijds opslaan",
+    "description": "Form detail field 'suspensionAllowed' label",
+    "originalDefault": "Suspension allowed"
   },
   "e/VFua": {
     "defaultMessage": "Formulier actief",
@@ -104,6 +139,16 @@
     "defaultMessage": "Formulier niet actief",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "y0QrgV": {
+    "defaultMessage": "Onderstaande alleen te zien voor jou",
+    "description": "form detail information settings page 'only for admin' settings",
+    "originalDefault": "There settings are only visible for administrators"
+  },
+  "y24Z1K": {
+    "defaultMessage": "Volledige URL",
+    "description": "Form detail field 'url' label",
+    "originalDefault": "Form URL"
   },
   "zEFFxg": {
     "defaultMessage": "Oeps!",
