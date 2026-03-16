@@ -18,7 +18,7 @@ const AuthenticationRequired: React.FC<React.PropsWithChildren> = ({children}) =
     // If there is no session expiry date and no authenticated status,
     // we check with the api if the user is authenticated.
     if (date === null && authFailure === null) {
-      apiCall(`${apiBaseUrl}accounts/me`).then(response => {
+      apiCall(`${apiBaseUrl}v3/accounts/me`).then(response => {
         // If the user is not authenticated, redirect to the login page.
         if (response.status === 401) {
           redirect.toLogin(location.pathname);

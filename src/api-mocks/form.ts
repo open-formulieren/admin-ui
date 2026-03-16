@@ -94,7 +94,7 @@ export const buildForm = getDefaultFactory<Form>(FORM_DEFAULTS);
 
 export const mockFormDetailsGet = (formDetail = buildForm(), spy?: Mock) =>
   http.get(
-    `${BASE_URL}form/:uuid`,
+    `${BASE_URL}v3/form/:uuid`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);
@@ -109,7 +109,7 @@ export const mockFormDetailsGet = (formDetail = buildForm(), spy?: Mock) =>
 
 export const mockFormDetailsGetFailure = (spy?: Mock) =>
   http.get(
-    `${BASE_URL}form/:uuid`,
+    `${BASE_URL}v3/form/:uuid`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);
@@ -124,7 +124,7 @@ export const mockFormDetailsGetFailure = (spy?: Mock) =>
 
 export const mockFormDetailsPut = (formDetail = buildForm(), spy?: Mock) =>
   http.put(
-    `${BASE_URL}form/:uuid`,
+    `${BASE_URL}v3/form/:uuid`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);
@@ -139,7 +139,7 @@ export const mockFormDetailsPut = (formDetail = buildForm(), spy?: Mock) =>
 
 export const mockFormDetailsPutFailure = (spy?: Mock) =>
   http.put(
-    `${BASE_URL}form/:uuid`,
+    `${BASE_URL}v3/form/:uuid`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);
