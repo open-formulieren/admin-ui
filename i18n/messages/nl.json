@@ -4,6 +4,12 @@
     "description": "Route breadcrumb label for form categories",
     "originalDefault": "categories"
   },
+  "2wkqV6": {
+    "defaultMessage": "Preview",
+    "description": "Preview button text",
+    "isTranslated": true,
+    "originalDefault": "Preview"
+  },
   "6UFbVC": {
     "defaultMessage": "Je moet ingelogd zijn voor deze actie.",
     "description": "'Not authenticated' error message",
@@ -48,6 +54,11 @@
     "defaultMessage": "Formulieren",
     "description": "Route breadcrumb label for forms overview",
     "originalDefault": "forms"
+  },
+  "RT8KNi": {
+    "defaultMessage": "Opslaan",
+    "description": "Save button text",
+    "originalDefault": "Save"
   },
   "ZiDANM": {
     "defaultMessage": "Home",

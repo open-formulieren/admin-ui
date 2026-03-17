@@ -12,7 +12,19 @@ import {Outlet} from 'react-router';
 import {EnvironmentBadge, FormStatusBadge} from '@/components/badge';
 import {useBreadcrumbItems} from '@/hooks/useBreadcrumbItems';
 
-const BasicLayout = () => {
+export interface BasicLayoutProps {
+  /**
+   * The content to be displayed inside the layout. If not provided, the Outlet component
+   * will be used to render the current route's content.
+   */
+  children?: React.ReactNode;
+  /**
+   * The footer content to be displayed at the bottom of the layout.
+   */
+  footer?: React.ReactNode;
+}
+
+const BasicLayout: React.FC<BasicLayoutProps> = ({footer, children}) => {
   const breadcrumbItems = useBreadcrumbItems();
   return (
     <CardBaseTemplate
@@ -81,36 +93,12 @@ const BasicLayout = () => {
           />,
         ]}
       />
-      <Body fullHeight>
-        <Outlet />
-      </Body>
-      <Column direction="row" span={12}>
-        <Toolbar
-          pad
-          variant="alt"
-          align="start"
-          items={[
-            {
-              variant: 'primary',
-              children: (
-                <>
-                  <Outline.BookmarkSquareIcon />
-                  Action 1
-                </>
-              ),
-            },
-            {
-              variant: 'secondary',
-              children: (
-                <>
-                  <Outline.EyeIcon />
-                  Action 2
-                </>
-              ),
-            },
-          ]}
-        />
-      </Column>
+      <Body fullHeight>{children ?? <Outlet />}</Body>
+      {footer && (
+        <Column direction="row" span={12}>
+          {footer}
+        </Column>
+      )}
     </CardBaseTemplate>
   );
 };

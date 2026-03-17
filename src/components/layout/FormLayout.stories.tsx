@@ -1,89 +1,41 @@
-import {Button} from '@maykin-ui/admin-ui';
-import type {Decorator, Meta, StoryObj} from '@storybook/react-vite';
-import {QueryClient, QueryClientProvider} from '@tanstack/react-query';
-import {Field, Form} from 'formik';
-import {RouterProvider, createMemoryRouter} from 'react-router';
-import {expect, fn, userEvent, within} from 'storybook/test';
+import type {Meta, StoryObj} from '@storybook/react-vite';
+import {Form} from 'formik';
+import {expect, fireEvent, fn, userEvent, waitFor, within} from 'storybook/test';
 
-import {mswWorker} from '@/api-mocks';
 import {buildForm, mockFormDetailsGet, mockFormDetailsPut} from '@/api-mocks/form';
-import FormLayout, {FormLayoutInner} from '@/components/layout/FormLayout';
-import {formLoader} from '@/queryClient';
-
-const withFormQueryClientAndRouterProvider: Decorator = (Story, context) => {
-  const storyHandlers = context.parameters?.msw?.handlers ?? [];
-
-  // Register story handlers BEFORE router is created
-  if (storyHandlers.length > 0) {
-    mswWorker.use(...storyHandlers);
-  }
-
-  const storybookQueryClient = new QueryClient({
-    defaultOptions: {
-      queries: {retry: false},
-    },
-  });
-
-  const router = createMemoryRouter(
-    [
-      {
-        path: '/admin-ui/form/:formId',
-        loader: ({params}) => formLoader(storybookQueryClient, params.formId),
-        Component: FormLayout,
-        children: [
-          {
-            index: true,
-            Component: Story, // Story rendered inside the route
-          },
-        ],
-      },
-    ],
-    {
-      initialEntries: ['/admin-ui/form/e450890a-4166-410e-8d64-0a54ad30ba01'],
-    }
-  );
-
-  return (
-    <QueryClientProvider client={storybookQueryClient}>
-      <RouterProvider router={router} />
-    </QueryClientProvider>
-  );
-};
+import {TextField} from '@/components/form/TextField';
+import {withFormLayout} from '@/sb-decorators';
 
 // @TODO we should replace the Formik Field component with our own form inputs
 const FormPageContent: React.FC = () => {
   return (
     <Form>
-      <div>
-        <label htmlFor="form-name">Form name</label>
-        <Field id="form-name" name="name" autoComplete="false" />
-      </div>
-
-      <Button variant="primary" type="submit">
-        Submit
-      </Button>
+      <TextField name="name" label="Form name" />
     </Form>
   );
 };
 
 export default {
   title: 'Internal API / Layout / Form Layout',
-  component: FormLayout,
-} satisfies Meta<typeof FormLayout>;
-
-type FormLayoutInnerStory = StoryObj<typeof FormLayoutInner>;
-
-export const Default: FormLayoutInnerStory = {
-  render: args => (
-    <FormLayoutInner initialValues={args.initialValues} onSubmit={args.onSubmit}>
-      <FormPageContent />
-    </FormLayoutInner>
-  ),
-  args: {
-    initialValues: buildForm(),
-    onSubmit: fn(),
+  component: FormPageContent,
+  decorators: [withFormLayout],
+  parameters: {
+    layout: 'fullscreen',
+    formDetailPages: {
+      onMutate: fn(),
+    },
   },
-  play: async ({canvasElement, args}) => {
+} satisfies Meta<typeof FormPageContent>;
+
+type Story = StoryObj<typeof FormPageContent>;
+
+export const Default: Story = {
+  parameters: {
+    msw: {
+      handlers: [mockFormDetailsGet(buildForm()), mockFormDetailsPut()],
+    },
+  },
+  play: async ({canvasElement, parameters}) => {
     const canvas = within(canvasElement);
 
     const formNameInput = await canvas.findByLabelText('Form name');
@@ -94,22 +46,23 @@ export const Default: FormLayoutInnerStory = {
     await userEvent.type(formNameInput, 'My awesome form');
     expect(formNameInput).toHaveValue('My awesome form');
 
-    await userEvent.click(await canvas.findByText('Submit'));
-    expect(args.onSubmit).toBeCalled();
+    // Using fireEvent.click instead of userEvent.click because userEvent.click doesn't
+    // actually fire a click event, which we need to trigger the form submission.
+    await fireEvent.click(canvas.getByRole('button', {name: 'Save'}));
 
-    const expectedFormDetails = buildForm({name: 'My awesome form'});
-    expect(args.onSubmit).toBeCalledWith(expectedFormDetails);
+    await waitFor(() => {
+      expect(parameters.formDetailPages.onMutate).toBeCalled();
+
+      const expectedFormDetails = buildForm({name: 'My awesome form'});
+      expect(parameters.formDetailPages.onMutate).toBeCalledWith(expectedFormDetails);
+    });
   },
 };
 
-type FromRouterStory = StoryObj;
-
-export const FetchingFormDetailsUsingRouteLoader: FromRouterStory = {
-  decorators: [withFormQueryClientAndRouterProvider],
-  render: () => <FormPageContent />,
+export const FetchingFormDetailsUsingRouteLoader: Story = {
   parameters: {
     msw: {
-      handlers: [mockFormDetailsGet(buildForm({name: 'Route fetched form'})), mockFormDetailsPut()],
+      handlers: [mockFormDetailsGet(buildForm({name: 'Route fetched form'}))],
     },
   },
   play: async ({canvasElement}) => {

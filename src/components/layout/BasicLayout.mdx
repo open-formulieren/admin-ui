@@ -1,0 +1,24 @@
+import {ArgTypes, Canvas, Meta} from '@storybook/addon-docs/blocks';
+
+import * as BasicLayoutStories from './BasicLayout.stories';
+
+<Meta of={BasicLayoutStories} />
+
+# Basic Layout
+
+The `BasicLayout` component is the generic layout component for most (if not all) pages in the
+admin-ui. It provides a header, sidebar navigation, main content, and footer.
+
+`BasicLayout` takes a optional `children` prop, which will be used as the main content of the page.
+When the `children` property is not provided, a React-Router `<Outlet/>` will be used as the main
+content, allowing regular Layout usage.
+
+Because the `BasicLayout` component is used by other Layout components, we cannot assign it as a
+global React-router Layout. Otherwise, the elements of the `BasicLayout` would be rendered multiple
+times (as the global Layout, and in every Layout that uses it).
+
+<Canvas of={BasicLayoutStories.Default} />
+
+## Props
+
+<ArgTypes />
