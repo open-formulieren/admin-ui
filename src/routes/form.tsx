@@ -1,3 +1,5 @@
+import {InformationPage} from '@/pages';
+
 import type {RouteObject} from './types';
 
 const routes: RouteObject[] = [
@@ -58,6 +60,7 @@ const routes: RouteObject[] = [
     children: [
       {
         path: 'general',
+        Component: InformationPage,
       },
       {
         path: 'authentication',

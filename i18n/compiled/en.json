@@ -55,6 +55,12 @@
       "value": "isRequired"
     }
   ],
+  "AuDlLe": [
+    {
+      "type": 0,
+      "value": "Information"
+    }
+  ],
   "BfpzoP": [
     {
       "type": 0,
@@ -67,10 +73,22 @@
       "value": "Form submission statistics"
     }
   ],
+  "Fm7wN7": [
+    {
+      "type": 0,
+      "value": "Slug"
+    }
+  ],
   "JX8BYx": [
     {
       "type": 0,
       "value": "Unfortunately something went wrong!"
+    }
+  ],
+  "K1cg9S": [
+    {
+      "type": 0,
+      "value": "These settings are also visible for citizens"
     }
   ],
   "KJFOCt": [
@@ -101,6 +119,24 @@
     {
       "type": 0,
       "value": "Save"
+    }
+  ],
+  "SisPrZ": [
+    {
+      "type": 0,
+      "value": "Category"
+    }
+  ],
+  "WSiYMn": [
+    {
+      "type": 0,
+      "value": "Unique ID"
+    }
+  ],
+  "WzjRYh": [
+    {
+      "type": 0,
+      "value": "Internal name"
     }
   ],
   "ZiDANM": [
@@ -149,6 +185,12 @@
     {
       "type": 0,
       "value": "Inactive form"
+    }
+  ],
+  "y0QrgV": [
+    {
+      "type": 0,
+      "value": "There settings are only visible for administrators"
     }
   ],
   "zEFFxg": [

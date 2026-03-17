@@ -20,6 +20,11 @@
     "description": "Form field label content/wrapper",
     "originalDefault": "{isRequired, select, true {{label} <span>Required</span>} other {{label}} }"
   },
+  "AuDlLe": {
+    "defaultMessage": "Informatie",
+    "description": "form detail information settings page title",
+    "originalDefault": "Information"
+  },
   "BfpzoP": {
     "defaultMessage": "Formulier ingepland",
     "description": "Label for form status \"scheduled\"",
@@ -30,10 +35,20 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "Fm7wN7": {
+    "defaultMessage": "URL-deel",
+    "description": "Form detail field 'slug' label",
+    "originalDefault": "Slug"
+  },
   "JX8BYx": {
     "defaultMessage": "Er ging helaas iets fout!",
     "description": "'Generic' error message",
     "originalDefault": "Unfortunately something went wrong!"
+  },
+  "K1cg9S": {
+    "defaultMessage": "Onderstaande ook te zien voor invuller",
+    "description": "form detail information settings page 'also for citizen' settings",
+    "originalDefault": "These settings are also visible for citizens"
   },
   "KJFOCt": {
     "defaultMessage": "Logica",
@@ -59,6 +74,21 @@
     "defaultMessage": "Opslaan",
     "description": "Save button text",
     "originalDefault": "Save"
+  },
+  "SisPrZ": {
+    "defaultMessage": "Categorie",
+    "description": "Form detail field 'category' label",
+    "originalDefault": "Category"
+  },
+  "WSiYMn": {
+    "defaultMessage": "Uniek ID",
+    "description": "Form detail field 'uuid' label",
+    "originalDefault": "Unique ID"
+  },
+  "WzjRYh": {
+    "defaultMessage": "Interne naam",
+    "description": "Form detail field 'internalName' label",
+    "originalDefault": "Internal name"
   },
   "ZiDANM": {
     "defaultMessage": "Home",
@@ -99,6 +129,11 @@
     "defaultMessage": "Formulier niet actief",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "y0QrgV": {
+    "defaultMessage": "Onderstaande alleen te zien voor jou",
+    "description": "form detail information settings page 'only for admin' settings",
+    "originalDefault": "There settings are only visible for administrators"
   },
   "zEFFxg": {
     "defaultMessage": "Oeps!",

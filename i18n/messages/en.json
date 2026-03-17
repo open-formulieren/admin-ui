@@ -19,6 +19,11 @@
     "description": "Form field label content/wrapper",
     "originalDefault": "{isRequired, select, true {{label} <span>Required</span>} other {{label}} }"
   },
+  "AuDlLe": {
+    "defaultMessage": "Information",
+    "description": "form detail information settings page title",
+    "originalDefault": "Information"
+  },
   "BfpzoP": {
     "defaultMessage": "Scheduled form",
     "description": "Label for form status \"scheduled\"",
@@ -29,10 +34,20 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "Fm7wN7": {
+    "defaultMessage": "Slug",
+    "description": "Form detail field 'slug' label",
+    "originalDefault": "Slug"
+  },
   "JX8BYx": {
     "defaultMessage": "Unfortunately something went wrong!",
     "description": "'Generic' error message",
     "originalDefault": "Unfortunately something went wrong!"
+  },
+  "K1cg9S": {
+    "defaultMessage": "These settings are also visible for citizens",
+    "description": "form detail information settings page 'also for citizen' settings",
+    "originalDefault": "These settings are also visible for citizens"
   },
   "KJFOCt": {
     "defaultMessage": "Logic",
@@ -58,6 +73,21 @@
     "defaultMessage": "Save",
     "description": "Save button text",
     "originalDefault": "Save"
+  },
+  "SisPrZ": {
+    "defaultMessage": "Category",
+    "description": "Form detail field 'category' label",
+    "originalDefault": "Category"
+  },
+  "WSiYMn": {
+    "defaultMessage": "Unique ID",
+    "description": "Form detail field 'uuid' label",
+    "originalDefault": "Unique ID"
+  },
+  "WzjRYh": {
+    "defaultMessage": "Internal name",
+    "description": "Form detail field 'internalName' label",
+    "originalDefault": "Internal name"
   },
   "ZiDANM": {
     "defaultMessage": "Home",
@@ -98,6 +128,11 @@
     "defaultMessage": "Inactive form",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "y0QrgV": {
+    "defaultMessage": "There settings are only visible for administrators",
+    "description": "form detail information settings page 'only for admin' settings",
+    "originalDefault": "There settings are only visible for administrators"
   },
   "zEFFxg": {
     "defaultMessage": "Oops!",

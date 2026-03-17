@@ -55,6 +55,12 @@
       "value": "isRequired"
     }
   ],
+  "AuDlLe": [
+    {
+      "type": 0,
+      "value": "Informatie"
+    }
+  ],
   "BfpzoP": [
     {
       "type": 0,
@@ -67,10 +73,22 @@
       "value": "Inzendingstatistieken"
     }
   ],
+  "Fm7wN7": [
+    {
+      "type": 0,
+      "value": "URL-deel"
+    }
+  ],
   "JX8BYx": [
     {
       "type": 0,
       "value": "Er ging helaas iets fout!"
+    }
+  ],
+  "K1cg9S": [
+    {
+      "type": 0,
+      "value": "Onderstaande ook te zien voor invuller"
     }
   ],
   "KJFOCt": [
@@ -101,6 +119,24 @@
     {
       "type": 0,
       "value": "Opslaan"
+    }
+  ],
+  "SisPrZ": [
+    {
+      "type": 0,
+      "value": "Categorie"
+    }
+  ],
+  "WSiYMn": [
+    {
+      "type": 0,
+      "value": "Uniek ID"
+    }
+  ],
+  "WzjRYh": [
+    {
+      "type": 0,
+      "value": "Interne naam"
     }
   ],
   "ZiDANM": [
@@ -149,6 +185,12 @@
     {
       "type": 0,
       "value": "Formulier niet actief"
+    }
+  ],
+  "y0QrgV": [
+    {
+      "type": 0,
+      "value": "Onderstaande alleen te zien voor jou"
     }
   ],
   "zEFFxg": [

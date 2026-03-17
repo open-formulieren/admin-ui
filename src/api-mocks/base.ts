@@ -1,6 +1,6 @@
 import {cloneDeep, set} from 'lodash';
 
-export const BASE_URL = 'http://localhost:8000/api/v3/';
+export const BASE_URL = 'http://localhost:8000/api/';
 
 /**
  * Create a function to build an object from a default with optional overrides.
