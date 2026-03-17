@@ -1,10 +1,10 @@
-import {ErrorMessage, Toggle as MyknToggle} from '@maykin-ui/admin-ui';
+import {ErrorMessage, Checkbox as MyknCheckbox} from '@maykin-ui/admin-ui';
 import {useField, useFormikContext} from 'formik';
 import {useId} from 'react';
 
 import FormField from '../FormField';
 
-export interface ToggleProps {
+export interface CheckboxProps {
   /**
    * The name of the form field/input, used to set/track the field value in the form state.
    */
@@ -20,13 +20,9 @@ export interface ToggleProps {
    * Required fields get additional markup/styling to indicate this validation requirement.
    */
   isRequired?: boolean;
-  /**
-   * If defined overwrite default 'off'/'uit' text on the toggle
-   */
-  labelOff?: string;
 }
 
-const Toggle: React.FC<ToggleProps> = ({name, label, isRequired, labelOff}) => {
+const Checkbox: React.FC<CheckboxProps> = ({name, label, isRequired}) => {
   const {validateField} = useFormikContext();
 
   // the value should not be passed down to underlying checkbox
@@ -43,7 +39,7 @@ const Toggle: React.FC<ToggleProps> = ({name, label, isRequired, labelOff}) => {
   return (
     <FormField>
       {invalid && <ErrorMessage id={errorMessageId}>{error}</ErrorMessage>}
-      <MyknToggle
+      <MyknCheckbox
         id={id}
         aria-invalid={invalid}
         aria-describedby={errorMessageId}
@@ -53,12 +49,11 @@ const Toggle: React.FC<ToggleProps> = ({name, label, isRequired, labelOff}) => {
           props.onBlur(e);
           await validateField(name);
         }}
-        labelOff={labelOff}
       >
         {label}
-      </MyknToggle>
+      </MyknCheckbox>
     </FormField>
   );
 };
 
-export default Toggle;
+export default Checkbox;
