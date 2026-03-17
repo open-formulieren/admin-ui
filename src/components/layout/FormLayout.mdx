@@ -30,13 +30,14 @@ implementation and testing simple.
 A simple form page example:
 
 ```tsx
-import {Field, Form} from 'formik';
+import {Form} from 'formik';
+
+import {TextField} from '@/components/form/TextField';
 
 const FormPageContent: React.FC = () => {
   return (
     <Form>
-      <label htmlFor="form-name">Form name</label>
-      <Field id="form-name" name="name" />
+      <TextField name="name" label="Form name" />
     </Form>
   );
 };

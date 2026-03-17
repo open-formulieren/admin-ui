@@ -1,16 +1,16 @@
 import type {Meta, StoryObj} from '@storybook/react-vite';
-import {Field, Form} from 'formik';
+import {Form} from 'formik';
 import {expect, fireEvent, fn, userEvent, waitFor, within} from 'storybook/test';
 
 import {buildForm, mockFormDetailsGet, mockFormDetailsPut} from '@/api-mocks/form';
+import {TextField} from '@/components/form/TextField';
 import {withFormLayout} from '@/sb-decorators';
 
 // @TODO we should replace the Formik Field component with our own form inputs
 const FormPageContent: React.FC = () => {
   return (
     <Form>
-      <label htmlFor="form-name">Form name</label>
-      <Field id="form-name" name="name" autoComplete="false" />
+      <TextField name="name" label="Form name" />
     </Form>
   );
 };
