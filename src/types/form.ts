@@ -154,8 +154,8 @@ export interface Form {
   internalName: string;
   name: string;
   slug: string;
-  category?: string;
-  theme?: number;
+  category?: string; // uuid of category
+  theme?: string; // uuid of theme
   description: string;
 
   introductionPageContent: string;
