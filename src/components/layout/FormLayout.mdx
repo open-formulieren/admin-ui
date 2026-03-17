@@ -14,7 +14,7 @@ adds Formik state/context for form editing, and handles the form submission. It 
 `formLoader` loader uses a tanstack query client to keep a cached version of the form details, to
 prevent duplicate API requests.
 
-The form submissions are persisted through `useFormMutation`, which implementes a tanstack
+The form submissions are persisted through `useFormMutation`, which implements a tanstack
 useMutation. `useFormMutation` persists the data to API, and updates the local form details cache.
 
 The Formik state/context is added through a secondary `FormLayoutInner` component.
