@@ -4,7 +4,7 @@ import {useId} from 'react';
 
 import FormField from '../FormField';
 
-export interface CheckboxProps {
+export interface ToggleProps {
   /**
    * The name of the form field/input, used to set/track the field value in the form state.
    */
@@ -26,7 +26,7 @@ export interface CheckboxProps {
   labelOff?: string;
 }
 
-const Toggle: React.FC<CheckboxProps> = ({name, label, isRequired, labelOff}) => {
+const Toggle: React.FC<ToggleProps> = ({name, label, isRequired, labelOff}) => {
   const {validateField} = useFormikContext();
 
   // the value should not be passed down to underlying checkbox
