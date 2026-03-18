@@ -1,6 +1,7 @@
 import type {Mock} from '@vitest/spy';
 import {HttpResponse, http} from 'msw';
 
+import {FORM_STEP_DEFAULTS} from '@/api-mocks/formStep';
 import type {Form} from '@/types/form';
 
 import {BASE_URL_V3, getDefaultFactory} from './base';
@@ -22,13 +23,11 @@ export const FORM_DEFAULTS: Form = {
   confirmationCosignEmailTitle: '',
   confirmationCosignEmailContent: '',
 
-  buttonLiterals: {
-    begin: 'Begin',
-    save: 'Save',
-    next: 'Next',
-    previous: 'Previous',
-    change: 'Change',
-    confirm: 'Confirm',
+  literals: {
+    previous_text: 'Previous page',
+    begin_text: 'Begin form',
+    change_text: 'Change',
+    confirm_text: 'Confirm',
   },
 
   suspensionAllowed: true,
@@ -36,7 +35,7 @@ export const FORM_DEFAULTS: Form = {
   showSummaryProgress: true,
   authenticationBackends: [],
   autoLoginAuthenticationBackend: undefined,
-  steps: [],
+  steps: [FORM_STEP_DEFAULTS],
 
   active: true,
   // Date string in ISO 8601 format
