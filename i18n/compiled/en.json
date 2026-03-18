@@ -1,4 +1,10 @@
 {
+  "0uBorL": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the form step to go to the previous step"
+    }
+  ],
   "2vFy0E": [
     {
       "type": 0,
@@ -9,6 +15,12 @@
     {
       "type": 0,
       "value": "Preview"
+    }
+  ],
+  "4BhLtR": [
+    {
+      "type": 0,
+      "value": "Form button labels"
     }
   ],
   "6UFbVC": [
@@ -67,6 +79,12 @@
       "value": "Form submission statistics"
     }
   ],
+  "FkU1o8": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed at the start of the form to indicate the user can begin to fill in the form"
+    }
+  ],
   "JX8BYx": [
     {
       "type": 0,
@@ -91,6 +109,12 @@
       "value": "Your session has expired."
     }
   ],
+  "Ny2VNs": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the overview page to change a certain step"
+    }
+  ],
   "Qroj81": [
     {
       "type": 0,
@@ -101,6 +125,30 @@
     {
       "type": 0,
       "value": "Save"
+    }
+  ],
+  "Ufxo9U": [
+    {
+      "type": 0,
+      "value": "Show step progression next to the form"
+    }
+  ],
+  "UujtUf": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the form step to save the current information"
+    }
+  ],
+  "WczS7x": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the form step to go to the next step"
+    }
+  ],
+  "ZeeBAX": [
+    {
+      "type": 0,
+      "value": "The buttons in the form use global settings. The buttons below are a preview of the buttons that will be used in the form. To change the button labels, click the 'Edit buttons' button below."
     }
   ],
   "ZiDANM": [
@@ -119,6 +167,30 @@
     {
       "type": 0,
       "value": "Active form"
+    }
+  ],
+  "eRPpMl": [
+    {
+      "type": 0,
+      "value": "Theme"
+    }
+  ],
+  "exbKi7": [
+    {
+      "type": 0,
+      "value": "Edit buttons"
+    }
+  ],
+  "k1QXND": [
+    {
+      "type": 0,
+      "value": "Presentation"
+    }
+  ],
+  "k2Tngs": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the overview page to confirm the form is filled in correctly"
     }
   ],
   "nxMx4O": [
@@ -149,6 +221,24 @@
     {
       "type": 0,
       "value": "Inactive form"
+    }
+  ],
+  "tJ1m3q": [
+    {
+      "type": 0,
+      "value": "The text that will be displayed in the overview page to go to the previous step"
+    }
+  ],
+  "v9B7G6": [
+    {
+      "type": 0,
+      "value": "Show current step number and total amount of steps below the form title"
+    }
+  ],
+  "z2aEGS": [
+    {
+      "type": 0,
+      "value": "Save"
     }
   ],
   "zEFFxg": [
