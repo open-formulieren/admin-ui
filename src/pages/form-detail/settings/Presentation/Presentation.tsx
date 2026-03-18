@@ -1,11 +1,14 @@
-import {Column, Grid, H2} from '@maykin-ui/admin-ui';
+import {Column, Grid, H2, P} from '@maykin-ui/admin-ui';
 import {useQuery} from '@tanstack/react-query';
 import {FormattedMessage} from 'react-intl';
 
 import {BASE_URL} from '@/api-mocks';
 import {Checkbox, Select} from '@/components/form';
+import FormButtonsPreview from '@/components/preview/FormButtonsPreview';
 import type {Theme} from '@/types/theme';
 import {apiCall} from '@/utils/fetch';
+
+import './Presentation.scss';
 
 const PresentationPage: React.FC = () => {
   const {data = []} = useQuery<Theme[]>({
@@ -56,6 +59,16 @@ const PresentationPage: React.FC = () => {
               />
             }
           />
+
+          <P size="md">
+            <FormattedMessage
+              description="Form detail presentation settings form buttons preview description"
+              defaultMessage={`The buttons in the form use global settings. The buttons
+              below are a preview of the buttons that will be used in the form. To change
+              the button labels, click the 'Edit buttons' button below.`}
+            />
+          </P>
+          <FormButtonsPreview className="openforms-page-presentation__form-buttons-preview" />
         </Column>
       </Grid>
     </div>
