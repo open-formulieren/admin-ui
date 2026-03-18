@@ -1,16 +1,25 @@
-import {Column, Grid, H2, P} from '@maykin-ui/admin-ui';
+import {Body, Button, Column, Grid, H2, H3, Modal, P} from '@maykin-ui/admin-ui';
 import {useQuery} from '@tanstack/react-query';
+import {useFormikContext} from 'formik';
+import {useState} from 'react';
 import {FormattedMessage} from 'react-intl';
 
 import {BASE_URL} from '@/api-mocks';
 import {Checkbox, Select} from '@/components/form';
 import FormButtonsPreview from '@/components/preview/FormButtonsPreview';
+import type {InternalForm} from '@/types/form';
 import type {Theme} from '@/types/theme';
 import {apiCall} from '@/utils/fetch';
 
+import type {LiteralsFormData} from './LiteralsForm';
+import LiteralsForm from './LiteralsForm';
 import './Presentation.scss';
 
 const PresentationPage: React.FC = () => {
+  const {values, setFieldValue} = useFormikContext<InternalForm>();
+  const {literals, _stepLiterals} = values;
+
+  const [isModalOpen, setModalOpen] = useState(false);
   const {data = []} = useQuery<Theme[]>({
     queryKey: ['form-themes'],
     queryFn: () => apiCall(`${BASE_URL}v2/themes`).then(res => res.json()),
@@ -20,6 +29,18 @@ const PresentationPage: React.FC = () => {
     value: theme.uuid,
     label: theme.name,
   }));
+
+  const openModal = () => setModalOpen(true);
+  const closeModal = () => setModalOpen(false);
+
+  const updateLiterals = async (newLiterals: LiteralsFormData) => {
+    // Update formik values with new button labels
+    await setFieldValue('literals', newLiterals.literals);
+    await setFieldValue('_stepLiterals', newLiterals._stepLiterals);
+
+    // Close modal after submission
+    closeModal();
+  };
 
   return (
     <div className="openforms-page-presentation">
@@ -69,8 +90,35 @@ const PresentationPage: React.FC = () => {
             />
           </P>
           <FormButtonsPreview className="openforms-page-presentation__form-buttons-preview" />
+
+          <Button variant="primary" onClick={openModal}>
+            <FormattedMessage
+              description="Edit form button labels button text"
+              defaultMessage="Edit buttons"
+            />
+          </Button>
         </Column>
       </Grid>
+
+      <Modal
+        size="m"
+        position="side"
+        open={isModalOpen}
+        onClose={closeModal}
+        closedby="any"
+        title={
+          <H3>
+            <FormattedMessage
+              description="Edit form button labels modal title"
+              defaultMessage="Form button labels"
+            />
+          </H3>
+        }
+      >
+        <Body>
+          <LiteralsForm initialValues={{literals, _stepLiterals}} onSubmit={updateLiterals} />
+        </Body>
+      </Modal>
     </div>
   );
 };
