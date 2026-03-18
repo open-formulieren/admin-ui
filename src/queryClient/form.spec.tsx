@@ -15,8 +15,13 @@ import {
   mswWorker,
 } from '@/api-mocks';
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
-import {formLoader, getFormDetailsQueryKey, useFormMutation} from '@/queryClient/form';
-import type {Form} from '@/types/form';
+import {
+  formLoader,
+  formToInternalForm,
+  getFormDetailsQueryKey,
+  useFormMutation,
+} from '@/queryClient/form';
+import type {InternalForm} from '@/types/form';
 
 const AppWrapper: React.FC<React.PropsWithChildren> = ({children}) => (
   <AdminSettingsProvider apiBaseUrl={BASE_URL} environmentInfo={{label: 'of-dev', showBadge: true}}>
@@ -34,7 +39,7 @@ const QueryClientProviderWrapper: React.FC<React.PropsWithChildren<{client: Quer
 const PageWithFormMutation: React.FC<{
   testClient: QueryClient;
   formId: string;
-  updatedFormDetails: Form;
+  updatedFormDetails: InternalForm;
 }> = ({testClient, formId, updatedFormDetails}) => {
   const {mutate} = useFormMutation(testClient, formId);
 
@@ -53,7 +58,9 @@ describe('formLoader', () => {
     const testClient = new QueryClient();
     const result = await formLoader(testClient, 'e450890a-4166-410e-8d64-0a54ad30ba01');
 
-    await expect(result).toEqual(formDetails);
+    // The form details should be converted to the internal form format
+    const internalForm = formToInternalForm(formDetails);
+    await expect(result).toEqual(internalForm);
   });
 
   it('should throw an 404 error when the api responses with 404', async () => {
@@ -93,7 +100,8 @@ describe('formLoader in router', () => {
 
 describe('useFormMutation', () => {
   it('should update the formDetails cache after successful PUT requests', async () => {
-    const formDetails = buildForm();
+    // The form details inside the queryClient should be of the type InternalForm
+    const internalFormDetails = formToInternalForm(buildForm());
     const updatedFormDetails = buildForm({name: 'Updated form name'});
     mswWorker.use(mockFormDetailsPut(updatedFormDetails));
 
@@ -101,14 +109,14 @@ describe('useFormMutation', () => {
 
     // Set query client data
     const testClient = new QueryClient();
-    testClient.setQueryData(getFormDetailsQueryKey(formId), formDetails);
+    testClient.setQueryData<InternalForm>(getFormDetailsQueryKey(formId), internalFormDetails);
 
     const {getByText} = await render(
       <QueryClientProviderWrapper client={testClient}>
         <PageWithFormMutation
           testClient={testClient}
           formId={formId}
-          updatedFormDetails={updatedFormDetails}
+          updatedFormDetails={formToInternalForm(updatedFormDetails)}
         />
       </QueryClientProviderWrapper>
     );
@@ -116,27 +124,30 @@ describe('useFormMutation', () => {
 
     // Expect the form data to have been updated
     await waitFor(() =>
-      expect(testClient.getQueryData(getFormDetailsQueryKey(formId))).toEqual(updatedFormDetails)
+      expect(testClient.getQueryData<InternalForm>(getFormDetailsQueryKey(formId))).toEqual(
+        formToInternalForm(updatedFormDetails)
+      )
     );
   });
 
   it('should not update the formDetails cache after failing PUT requests', async () => {
-    const formDetails = buildForm();
-    const updatedFormDetails = buildForm({name: 'Updated form name'});
+    // The form details inside the queryClient should be of the type InternalForm
+    const internalFormDetails = formToInternalForm(buildForm());
+    const internalUpdatedFormDetails = formToInternalForm(buildForm({name: 'Updated form name'}));
     mswWorker.use(mockFormDetailsPutFailure());
 
     const formId = 'e450890a-4166-410e-8d64-0a54ad30ba01';
 
     // Set query client data
     const testClient = new QueryClient();
-    testClient.setQueryData(getFormDetailsQueryKey(formId), formDetails);
+    testClient.setQueryData<InternalForm>(getFormDetailsQueryKey(formId), internalFormDetails);
 
     const {getByText} = await render(
       <QueryClientProviderWrapper client={testClient}>
         <PageWithFormMutation
           testClient={testClient}
           formId={formId}
-          updatedFormDetails={updatedFormDetails}
+          updatedFormDetails={internalUpdatedFormDetails}
         />
       </QueryClientProviderWrapper>
     );
@@ -144,6 +155,8 @@ describe('useFormMutation', () => {
     await getByText('mutate data').click();
 
     // Expect the form data to not have been updated
-    await expect(testClient.getQueryData(getFormDetailsQueryKey(formId))).toEqual(formDetails);
+    expect(testClient.getQueryData<InternalForm>(getFormDetailsQueryKey(formId))).toEqual(
+      internalFormDetails
+    );
   });
 });

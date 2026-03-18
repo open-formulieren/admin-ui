@@ -229,3 +229,10 @@ export interface Form {
   variables: FormVariable<FormVariableTypes>[];
   translations: FormTranslation[];
 }
+
+export interface InternalForm extends Form {
+  // Frontend-only collection for the step literals. This is used for the step literals
+  // configuration. When submitting the form, these literals are used to update the step
+  // literals. This is done to have a single source of truth for the step literals.
+  _stepLiterals?: FormStep['literals'];
+}
