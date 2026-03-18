@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 import {Outlet, useLoaderData} from 'react-router';
 
 import {queryClient, useFormMutation} from '@/queryClient';
-import type {Form} from '@/types/form';
+import type {InternalForm} from '@/types/form';
 
 import BasicLayout from './BasicLayout';
 
@@ -16,10 +16,10 @@ import BasicLayout from './BasicLayout';
  * separated FormLayoutInner component, to simplify the setup and testing.
  */
 const FormLayout = () => {
-  const form = useLoaderData<Form>();
+  const form = useLoaderData<InternalForm>();
   const {mutate} = useFormMutation(queryClient, form.uuid);
 
-  const handleSubmit = (formDetails: Form) => {
+  const handleSubmit = (formDetails: InternalForm) => {
     mutate(formDetails);
   };
 
@@ -33,8 +33,8 @@ const FormLayout = () => {
 };
 
 export interface FormLayoutInnerProps {
-  initialValues: Form;
-  onSubmit: (formData: Form) => void;
+  initialValues: InternalForm;
+  onSubmit: (formData: InternalForm) => void;
 }
 
 /**
@@ -48,7 +48,7 @@ export const FormLayoutInner: React.FC<React.PropsWithChildren<FormLayoutInnerPr
   onSubmit,
   children,
 }) => (
-  <Formik<Form>
+  <Formik<InternalForm>
     initialValues={initialValues}
     validateOnChange={false}
     validateOnBlur={false}
