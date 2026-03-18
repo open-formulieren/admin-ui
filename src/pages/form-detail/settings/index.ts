@@ -1,3 +1,2 @@
-import {InformationPage} from './Information';
-
-export {InformationPage};
+export {InformationPage} from './Information';
+export {PresentationPage} from './Presentation';

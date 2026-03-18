@@ -1,4 +1,4 @@
-import {InformationPage} from '@/pages';
+import {InformationPage, PresentationPage} from '@/pages';
 
 import type {RouteObject} from './types';
 
@@ -70,6 +70,7 @@ const routes: RouteObject[] = [
       },
       {
         path: 'presentation',
+        Component: PresentationPage,
       },
       {
         path: 'prefill',
