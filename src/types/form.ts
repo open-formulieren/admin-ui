@@ -13,13 +13,11 @@ export interface FormTranslation {
   confirmationCosignEmailTitle: string;
   confirmationCosignEmailContent: string;
 
-  buttonLiterals: {
-    begin: string;
-    save: string;
-    next: string;
-    previous: string;
-    change: string;
-    confirm: string;
+  literals: {
+    previous_text: string;
+    begin_text: string;
+    change_text: string;
+    confirm_text: string;
   };
 }
 
@@ -136,6 +134,13 @@ export interface FormStep {
   internalName: string;
   slug: string;
   order: number;
+
+  literals: {
+    previous_text: string;
+    save_text: string;
+    next_text: string;
+  };
+
   configuration: Record<string, unknown>;
   loginRequired: boolean;
   isReusable: boolean;
@@ -154,8 +159,8 @@ export interface Form {
   internalName: string;
   name: string;
   slug: string;
-  category?: string;
-  theme?: number;
+  category?: string; // uuid of category
+  theme?: string; // uuid of theme
   description: string;
 
   introductionPageContent: string;
@@ -166,13 +171,11 @@ export interface Form {
   confirmationCosignEmailTitle: string;
   confirmationCosignEmailContent: string;
 
-  buttonLiterals: {
-    begin: string;
-    save: string;
-    next: string;
-    previous: string;
-    change: string;
-    confirm: string;
+  literals: {
+    previous_text: string;
+    begin_text: string;
+    change_text: string;
+    confirm_text: string;
   };
 
   suspensionAllowed: boolean;
@@ -225,4 +228,11 @@ export interface Form {
   logic: FormLogic[];
   variables: FormVariable<FormVariableTypes>[];
   translations: FormTranslation[];
+}
+
+export interface InternalForm extends Form {
+  // Frontend-only collection for the step literals. This is used for the step literals
+  // configuration. When submitting the form, these literals are used to update the step
+  // literals. This is done to have a single source of truth for the step literals.
+  _stepLiterals?: FormStep['literals'];
 }

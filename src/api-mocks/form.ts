@@ -22,13 +22,11 @@ export const FORM_DEFAULTS: Form = {
   confirmationCosignEmailTitle: '',
   confirmationCosignEmailContent: '',
 
-  buttonLiterals: {
-    begin: 'Begin',
-    save: 'Save',
-    next: 'Next',
-    previous: 'Previous',
-    change: 'Change',
-    confirm: 'Confirm',
+  literals: {
+    previous_text: 'Previous page',
+    begin_text: 'Begin form',
+    change_text: 'Change',
+    confirm_text: 'Confirm',
   },
 
   suspensionAllowed: true,
@@ -36,7 +34,28 @@ export const FORM_DEFAULTS: Form = {
   showSummaryProgress: true,
   authenticationBackends: [],
   autoLoginAuthenticationBackend: undefined,
-  steps: [],
+  steps: [
+    {
+      id: 0,
+      uuid: '493eb3ba-c674-4afb-9a37-569e373eec11',
+
+      name: 'First step',
+      internalName: 'First step',
+      slug: 'first-step',
+      order: 0,
+
+      literals: {
+        next_text: 'Next',
+        previous_text: 'Previous step',
+        save_text: 'Save current information',
+      },
+
+      configuration: {},
+      isApplicable: true,
+      isReusable: false,
+      loginRequired: false,
+    },
+  ],
 
   active: true,
   // Date string in ISO 8601 format

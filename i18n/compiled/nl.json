@@ -1,4 +1,10 @@
 {
+  "0uBorL": [
+    {
+      "type": 0,
+      "value": "De tekst op de knop die aangeeft om naar de vorige stap terug te gaan"
+    }
+  ],
   "2vFy0E": [
     {
       "type": 0,
@@ -9,6 +15,12 @@
     {
       "type": 0,
       "value": "Preview"
+    }
+  ],
+  "4BhLtR": [
+    {
+      "type": 0,
+      "value": "Knopteksten formulier"
     }
   ],
   "6UFbVC": [
@@ -67,6 +79,12 @@
       "value": "Inzendingstatistieken"
     }
   ],
+  "FkU1o8": [
+    {
+      "type": 0,
+      "value": "De tekst op de knop die aangeeft dat het formulier gestart kan worden"
+    }
+  ],
   "JX8BYx": [
     {
       "type": 0,
@@ -91,6 +109,12 @@
       "value": "Je sessie is verlopen."
     }
   ],
+  "Ny2VNs": [
+    {
+      "type": 0,
+      "value": "De tekst op de overzichtspagina om gegevens van een stap te wijzigen"
+    }
+  ],
   "Qroj81": [
     {
       "type": 0,
@@ -101,6 +125,30 @@
     {
       "type": 0,
       "value": "Opslaan"
+    }
+  ],
+  "Ufxo9U": [
+    {
+      "type": 0,
+      "value": "Toon voortgang aan zijkant"
+    }
+  ],
+  "UujtUf": [
+    {
+      "type": 0,
+      "value": "De tekst op de knop die aangeeft om de huidige stap op te slaan"
+    }
+  ],
+  "WczS7x": [
+    {
+      "type": 0,
+      "value": "De tekst op de knop die aangeeft om naar de volgende stap te gaan"
+    }
+  ],
+  "ZeeBAX": [
+    {
+      "type": 0,
+      "value": "De knoppen in het formulier hebben een algemene instelling, het voorbeeld van de knoppen zie je hieronder. Wil je de tekst op de knoppen voor dit formulier aanpassen, klik dan op de knop ‘Knoppen aanpassen’."
     }
   ],
   "ZiDANM": [
@@ -119,6 +167,30 @@
     {
       "type": 0,
       "value": "Formulier actief"
+    }
+  ],
+  "eRPpMl": [
+    {
+      "type": 0,
+      "value": "Stijl formulier"
+    }
+  ],
+  "exbKi7": [
+    {
+      "type": 0,
+      "value": "Knoppen aanpassen"
+    }
+  ],
+  "k1QXND": [
+    {
+      "type": 0,
+      "value": "Weergave"
+    }
+  ],
+  "k2Tngs": [
+    {
+      "type": 0,
+      "value": "De tekst om ingevulde gegevens te bevestigen op de overzichtspagina"
     }
   ],
   "nxMx4O": [
@@ -149,6 +221,24 @@
     {
       "type": 0,
       "value": "Formulier niet actief"
+    }
+  ],
+  "tJ1m3q": [
+    {
+      "type": 0,
+      "value": "De tekst op de overzichtspagina om naar de vorige stap terug te gaan"
+    }
+  ],
+  "v9B7G6": [
+    {
+      "type": 0,
+      "value": "Toon aantal stappen onder titel formulier"
+    }
+  ],
+  "z2aEGS": [
+    {
+      "type": 0,
+      "value": "Bevestigen"
     }
   ],
   "zEFFxg": [

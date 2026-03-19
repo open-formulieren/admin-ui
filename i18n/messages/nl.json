@@ -1,4 +1,9 @@
 {
+  "0uBorL": {
+    "defaultMessage": "De tekst op de knop die aangeeft om naar de vorige stap terug te gaan",
+    "description": "LiteralsForm field '_stepLiterals.previous_text' label",
+    "originalDefault": "The text that will be displayed in the form step to go to the previous step"
+  },
   "2vFy0E": {
     "defaultMessage": "Categorieën",
     "description": "Route breadcrumb label for form categories",
@@ -9,6 +14,11 @@
     "description": "Preview button text",
     "isTranslated": true,
     "originalDefault": "Preview"
+  },
+  "4BhLtR": {
+    "defaultMessage": "Knopteksten formulier",
+    "description": "Edit form button labels modal title",
+    "originalDefault": "Form button labels"
   },
   "6UFbVC": {
     "defaultMessage": "Je moet ingelogd zijn voor deze actie.",
@@ -30,6 +40,11 @@
     "description": "Route breadcrumb label for form submission statistics",
     "originalDefault": "form submission statistics"
   },
+  "FkU1o8": {
+    "defaultMessage": "De tekst op de knop die aangeeft dat het formulier gestart kan worden",
+    "description": "LiteralsForm field 'literals.begin_text' label",
+    "originalDefault": "The text that will be displayed at the start of the form to indicate the user can begin to fill in the form"
+  },
   "JX8BYx": {
     "defaultMessage": "Er ging helaas iets fout!",
     "description": "'Generic' error message",
@@ -50,6 +65,11 @@
     "description": "Session expiry notice - expired",
     "originalDefault": "Your session has expired."
   },
+  "Ny2VNs": {
+    "defaultMessage": "De tekst op de overzichtspagina om gegevens van een stap te wijzigen",
+    "description": "LiteralsForm field 'literals.change_text' label",
+    "originalDefault": "The text that will be displayed in the overview page to change a certain step"
+  },
   "Qroj81": {
     "defaultMessage": "Formulieren",
     "description": "Route breadcrumb label for forms overview",
@@ -59,6 +79,26 @@
     "defaultMessage": "Opslaan",
     "description": "Save button text",
     "originalDefault": "Save"
+  },
+  "Ufxo9U": {
+    "defaultMessage": "Toon voortgang aan zijkant",
+    "description": "Form detail field 'showProgressIndicator' label",
+    "originalDefault": "Show step progression next to the form"
+  },
+  "UujtUf": {
+    "defaultMessage": "De tekst op de knop die aangeeft om de huidige stap op te slaan",
+    "description": "LiteralsForm field '_stepLiterals.save_text' label",
+    "originalDefault": "The text that will be displayed in the form step to save the current information"
+  },
+  "WczS7x": {
+    "defaultMessage": "De tekst op de knop die aangeeft om naar de volgende stap te gaan",
+    "description": "LiteralsForm field '_stepLiterals.next_text' label",
+    "originalDefault": "The text that will be displayed in the form step to go to the next step"
+  },
+  "ZeeBAX": {
+    "defaultMessage": "De knoppen in het formulier hebben een algemene instelling, het voorbeeld van de knoppen zie je hieronder. Wil je de tekst op de knoppen voor dit formulier aanpassen, klik dan op de knop ‘Knoppen aanpassen’.",
+    "description": "Form detail presentation settings form buttons preview description",
+    "originalDefault": "The buttons in the form use global settings. The buttons below are a preview of the buttons that will be used in the form. To change the button labels, click the 'Edit buttons' button below."
   },
   "ZiDANM": {
     "defaultMessage": "Home",
@@ -74,6 +114,26 @@
     "defaultMessage": "Formulier actief",
     "description": "Label for form status \"active\"",
     "originalDefault": "Active form"
+  },
+  "eRPpMl": {
+    "defaultMessage": "Stijl formulier",
+    "description": "Form detail field 'theme' label",
+    "originalDefault": "Theme"
+  },
+  "exbKi7": {
+    "defaultMessage": "Knoppen aanpassen",
+    "description": "Edit form button labels button text",
+    "originalDefault": "Edit buttons"
+  },
+  "k1QXND": {
+    "defaultMessage": "Weergave",
+    "description": "form detail presentation settings page title",
+    "originalDefault": "Presentation"
+  },
+  "k2Tngs": {
+    "defaultMessage": "De tekst om ingevulde gegevens te bevestigen op de overzichtspagina",
+    "description": "LiteralsForm field 'literals.confirm_text' label",
+    "originalDefault": "The text that will be displayed in the overview page to confirm the form is filled in correctly"
   },
   "nxMx4O": {
     "defaultMessage": "Inlogprobleem",
@@ -99,6 +159,21 @@
     "defaultMessage": "Formulier niet actief",
     "description": "Label for form status \"inactive\"",
     "originalDefault": "Inactive form"
+  },
+  "tJ1m3q": {
+    "defaultMessage": "De tekst op de overzichtspagina om naar de vorige stap terug te gaan",
+    "description": "LiteralsForm field 'literals.previous_text' label",
+    "originalDefault": "The text that will be displayed in the overview page to go to the previous step"
+  },
+  "v9B7G6": {
+    "defaultMessage": "Toon aantal stappen onder titel formulier",
+    "description": "Form detail field 'showSummaryProgress' label",
+    "originalDefault": "Show current step number and total amount of steps below the form title"
+  },
+  "z2aEGS": {
+    "defaultMessage": "Bevestigen",
+    "description": "LiteralsForm 'Save' button label",
+    "originalDefault": "Save"
   },
   "zEFFxg": {
     "defaultMessage": "Oeps!",
