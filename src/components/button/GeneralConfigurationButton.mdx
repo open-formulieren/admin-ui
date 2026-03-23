@@ -1,0 +1,13 @@
+import {Canvas, Meta} from '@storybook/addon-docs/blocks';
+
+import * as GeneralConfigurationButtonStories from './GeneralConfigurationButton.stories';
+
+<Meta of={GeneralConfigurationButtonStories} />
+
+# General Configuration Button
+
+The `GeneralConfigurationButton` component can be used to navigate to the general configuration page
+of the Open Forms admin. It implements a regular HTML Anchor element and uses the `AdminSettings`
+defined `djangoUrls.generalConfiguration` as the target URL.
+
+<Canvas of={GeneralConfigurationButtonStories.Default} />
