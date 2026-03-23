@@ -21,7 +21,11 @@ import {sessionExpiresAt} from './session/session-expiry';
 vi.spyOn(redirect, 'toLogin').mockImplementation(vi.fn());
 
 const Wrapper: React.FC<React.PropsWithChildren> = ({children}) => (
-  <AdminSettingsProvider apiBaseUrl={BASE_URL} environmentInfo={{label: 'of-dev', showBadge: true}}>
+  <AdminSettingsProvider
+    apiBaseUrl={BASE_URL}
+    djangoUrls={{generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/'}}
+    environmentInfo={{label: 'of-dev', showBadge: true}}
+  >
     <IntlProvider locale="en">{children}</IntlProvider>
   </AdminSettingsProvider>
 );

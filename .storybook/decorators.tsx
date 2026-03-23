@@ -15,6 +15,11 @@ import {formLoader} from '@/queryClient';
 export const withAdminSettingsProvider: Decorator = (Story, {parameters}) => (
   <AdminSettingsProvider
     apiBaseUrl={parameters?.adminSettings?.apiBaseUrl ?? BASE_URL}
+    djangoUrls={
+      parameters?.adminSettings?.djangoUrls ?? {
+        generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
+      }
+    }
     environmentInfo={{
       label: parameters?.adminSettings?.environmentInfo?.label ?? 'storybook-test',
       showBadge: parameters?.adminSettings?.environmentInfo?.showBadge ?? true,
