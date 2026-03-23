@@ -50,6 +50,11 @@
     "description": "Session expiry notice - expired",
     "originalDefault": "Your session has expired."
   },
+  "OhINq5": {
+    "defaultMessage": "Bekijk algemene instellingen",
+    "description": "General configuration button text",
+    "originalDefault": "View general configuration"
+  },
   "Qroj81": {
     "defaultMessage": "Formulieren",
     "description": "Route breadcrumb label for forms overview",
