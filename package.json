@@ -89,12 +89,15 @@
   },
   "dependencies": {
     "@maykin-ui/admin-ui": "^3.0.0-alpha.5",
+    "@remirror/pm": "^3.0.1",
+    "@remirror/react": "^3.0.3",
     "@tanstack/react-query": "^5.90.16",
     "clsx": "^2.1.1",
     "formik": "^2.4.9",
     "lodash": "^4.17.23",
     "msw": "^2.12.7",
     "react-router": "^7.12.0",
+    "remirror": "^3.0.3",
     "state-pool": "^0.10.2"
   },
   "msw": {
