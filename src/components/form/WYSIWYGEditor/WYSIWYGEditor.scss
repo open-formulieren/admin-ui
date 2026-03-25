@@ -1,0 +1,6 @@
+.openforms-wysiwyg-editor {
+  // Override the default padding of the remirror editor
+  .remirror-editor-wrapper {
+    padding-top: var(--sizes-spacing-xs-v, 8px);
+  }
+}

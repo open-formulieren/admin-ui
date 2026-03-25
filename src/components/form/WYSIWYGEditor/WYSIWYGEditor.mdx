@@ -6,10 +6,22 @@ import * as WYSIWYGEditorStories from './WYSIWYGEditor.stories';
 
 # WYSIWYG Editor
 
-The `WYSIWYGEditor` uses the `proseMirror` library to provide a WYSIWYG editor.
+The `WYSIWYGEditor` uses the `remirror` library to provide a `proseMirror` WYSIWYG editor. The UI of
+the editor uses the Maykin admin-ui components, and is fully customizable.
 
 <Canvas of={WYSIWYGEditorStories.Default} />
 
 ## Props
 
 <ArgTypes />
+
+## Editor controls
+
+The editor allows for basic formatting, such as bold, italic, striketrhrough and underline. Similar
+to the 'old' OF Django admin, the editor also allows for lists and headings level 2–6.
+
+## Accessibility
+
+For now, the accessibility of the editor is limited. As the editor doesn't use a regular HTML input,
+we cannot alert screen-readers of potential errors. This also means that we cannot connect the field
+label to the editor. The editor controls do contain `aria-label` attributes.

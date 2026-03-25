@@ -4,7 +4,7 @@ import {FormattedMessage} from 'react-intl';
 import './Label.scss';
 
 export interface LabelProps {
-  id: string;
+  id?: string;
   isRequired?: boolean;
   children: React.ReactNode;
 }
