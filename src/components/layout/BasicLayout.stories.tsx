@@ -91,7 +91,7 @@ export const WithDynamicBreadcrumbs: Story = {
             }),
             // Use the loaded data for the breadcrumb label
             handle: {
-              breadcrumbLabel: (_, data) => data.name,
+              breadcrumbLabel: data => data.name,
             } satisfies RouteHandle<{name: string}>,
           },
         ],

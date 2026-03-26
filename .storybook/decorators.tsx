@@ -143,3 +143,26 @@ export const withFormLayout: Decorator = (Story, {parameters}) => {
     </QueryClientProvider>
   );
 };
+
+/**
+ * A decorator that sets up MSW handlers before creating the React Router.
+ *
+ * When requests are performed using the React-router loader, the regular WithRouter
+ * initializes the msw handlers after the loader request. This decorator ensures that the
+ * MSW handlers are registered before the router is created.
+ */
+export const withMswRouter: Decorator = (_, context) => {
+  const storyHandlers = context.parameters?.msw?.handlers ?? [];
+  const reactRouter = context.parameters?.reactRouter ?? {};
+
+  // Register story handlers BEFORE router is created
+  if (storyHandlers.length > 0) {
+    mswWorker.use(...storyHandlers);
+  }
+
+  const router = createMemoryRouter([reactRouter.routing], {
+    initialEntries: [reactRouter.location.path ?? '/'],
+  });
+
+  return <RouterProvider router={router} />;
+};

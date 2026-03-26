@@ -1,6 +1,8 @@
 import {setProjectAnnotations} from '@storybook/react-vite';
 import * as reactIntlAnnotations from 'storybook-react-intl/preview';
-import {beforeAll} from 'vitest';
+import {afterEach, beforeAll} from 'vitest';
+
+import {mswWorker} from '@/api-mocks';
 
 import * as projectAnnotations from './.storybook/preview';
 
@@ -11,3 +13,4 @@ const annotations = setProjectAnnotations([reactIntlAnnotations, projectAnnotati
 beforeAll(() => {
   annotations.beforeAll();
 });
+afterEach(() => mswWorker.resetHandlers());

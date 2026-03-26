@@ -1,11 +1,12 @@
-import type {IntlShape} from 'react-intl';
 import type {
   IndexRouteObject as RRIndexRouteObject,
   NonIndexRouteObject as RRNonIndexRouteObject,
 } from 'react-router';
 
+import type {PageIdValue} from './constants';
+
 export interface RouteHandle<T> {
-  breadcrumbLabel?: (intl: IntlShape, loaderData: T) => string;
+  breadcrumbLabel?: (loaderData: T) => React.ReactNode;
 }
 
 /**
@@ -16,7 +17,8 @@ export interface RouteHandle<T> {
  * know what our handlers should look like, we can override this type to ensure that the
  * 'handle' property is typed correctly.
  */
-type IndexRouteObject = Omit<RRIndexRouteObject, 'handle'> & {
+type IndexRouteObject = Omit<RRIndexRouteObject, 'id' | 'handle'> & {
+  id?: PageIdValue;
   handle?: RouteHandle<unknown>;
 };
 
@@ -34,7 +36,8 @@ type IndexRouteObject = Omit<RRIndexRouteObject, 'handle'> & {
  * By overriding this type, we can ensure that the 'handle' property is typed correctly
  * for all routes.
  */
-type NonIndexRouteObject = Omit<RRNonIndexRouteObject, 'handle' | 'children'> & {
+type NonIndexRouteObject = Omit<RRNonIndexRouteObject, 'id' | 'handle' | 'children'> & {
+  id?: PageIdValue;
   handle?: RouteHandle<unknown>;
   children?: RouteObject[];
 };
