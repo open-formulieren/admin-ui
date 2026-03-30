@@ -8,6 +8,7 @@ import {fn} from 'storybook/test';
 import {BASE_URL, mswWorker} from '@/api-mocks';
 import FormLayout from '@/components/layout/FormLayout';
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
+import type {AdminSettings} from '@/context/context';
 import RouterErrorBoundary from '@/errors/RouterErrorBoundary';
 import {sessionExpiresAt} from '@/guard/session/session-expiry';
 import {formLoader} from '@/queryClient';
@@ -16,9 +17,11 @@ export const withAdminSettingsProvider: Decorator = (Story, {parameters}) => (
   <AdminSettingsProvider
     apiBaseUrl={parameters?.adminSettings?.apiBaseUrl ?? BASE_URL}
     djangoUrls={
-      parameters?.adminSettings?.djangoUrls ?? {
+      parameters?.adminSettings?.djangoUrls ??
+      ({
         generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
-      }
+        adminLogin: 'http://localhost:8000/admin/classic-login/',
+      } satisfies AdminSettings['djangoUrls'])
     }
     environmentInfo={{
       label: parameters?.adminSettings?.environmentInfo?.label ?? 'storybook-test',

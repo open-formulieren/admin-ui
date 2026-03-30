@@ -23,13 +23,14 @@ export interface AdminSettings {
    */
   djangoUrls: {
     generalConfiguration: string;
+    adminLogin: string;
   };
 }
 
 const AdminSettingsContext = React.createContext<AdminSettings>({
   environmentInfo: {label: '', showBadge: true},
   apiBaseUrl: '',
-  djangoUrls: {generalConfiguration: ''},
+  djangoUrls: {generalConfiguration: '', adminLogin: ''},
 });
 
 AdminSettingsContext.displayName = 'AdminSettingsContext';
