@@ -34,6 +34,7 @@ export const ManuallyEnterFields: Story = {
             name: '',
             internalName: '',
             slug: '',
+            suspensionAllowed: false,
           })
         ),
         mockCategoriesGet(),
@@ -52,12 +53,16 @@ export const ManuallyEnterFields: Story = {
     const internalNameField = canvas.getByLabelText('Internal name', {exact: false});
     const uuidField = canvas.getByLabelText('Unique ID');
     const slugField = canvas.getByLabelText('Slug', {exact: false});
+    const fullUrlField = canvas.getByLabelText('Form URL');
+    const suspensionAllowedField = canvas.getByLabelText('Suspension allowed');
 
     await step('Initial values', () => {
       expect(nativeSelectForCategory.value).toBe('');
       expect(internalNameField).toHaveValue('');
       expect(uuidField).toHaveValue('e450890a-4166-410e-8d64-0a54ad30ba01');
       expect(slugField).toHaveValue('');
+      expect(fullUrlField).toHaveValue('');
+      expect(suspensionAllowedField).not.toBeChecked();
     });
 
     await step('Entering values', async () => {
@@ -75,6 +80,9 @@ export const ManuallyEnterFields: Story = {
       await userEvent.type(uuidField, 'my custom uuid');
       await userEvent.tab();
 
+      // Toggle suspension allowed
+      await userEvent.click(suspensionAllowedField);
+
       // Set the slug
       await userEvent.type(slugField, 'my-form');
       await userEvent.tab();
@@ -86,8 +94,10 @@ export const ManuallyEnterFields: Story = {
       expect(internalNameField).toHaveValue('my form');
       // uuid should not have been update
       expect(uuidField).toHaveValue('e450890a-4166-410e-8d64-0a54ad30ba01');
-      // slug should be a kebab-case variant on the internal name
       expect(slugField).toHaveValue('my-form');
+      expect(fullUrlField).toHaveValue('http://localhost:8000/my-form');
+      // suspension allowed should now be checked
+      expect(suspensionAllowedField).toBeChecked();
     });
 
     await step('Sumbit form and validate submitted values', async () => {
@@ -105,6 +115,7 @@ export const ManuallyEnterFields: Story = {
           slug: 'my-form',
           uuid: 'e450890a-4166-410e-8d64-0a54ad30ba01',
           category: '5d1138ae-bb0c-42fe-bcba-f1e7ffc1e79e',
+          suspensionAllowed: true,
         });
         expect(parameters.formDetailPages.onMutate).toBeCalledWith(expectedFormDetails);
       });

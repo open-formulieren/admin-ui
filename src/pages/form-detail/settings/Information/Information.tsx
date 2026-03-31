@@ -2,11 +2,14 @@ import {Column, Grid, H2, P} from '@maykin-ui/admin-ui';
 import {useQuery} from '@tanstack/react-query';
 import {FormattedMessage} from 'react-intl';
 
+import {Checkbox} from '@/components/form/Checkbox';
 import {Select} from '@/components/form/Select';
 import {TextField} from '@/components/form/TextField';
 import {useAdminSettings} from '@/hooks/useAdminSettings';
 import type {Category} from '@/types/category';
 import {apiCall} from '@/utils/fetch';
+
+import UrlField from './UrlField';
 
 const InformationPage: React.FC = () => {
   const {apiBaseUrls} = useAdminSettings();
@@ -68,6 +71,15 @@ const InformationPage: React.FC = () => {
             />
           }
         />
+        <Checkbox
+          name="suspensionAllowed"
+          label={
+            <FormattedMessage
+              description="Form detail field 'suspensionAllowed' label"
+              defaultMessage="Suspension allowed"
+            />
+          }
+        />
         <P>
           <FormattedMessage
             description="form detail information settings page 'also for citizen' settings"
@@ -79,6 +91,14 @@ const InformationPage: React.FC = () => {
           isRequired
           label={
             <FormattedMessage description="Form detail field 'slug' label" defaultMessage="Slug" />
+          }
+        />
+        <UrlField
+          label={
+            <FormattedMessage
+              description="Form detail field 'url' label"
+              defaultMessage="Form URL"
+            />
           }
         />
       </Column>
