@@ -27,6 +27,7 @@ const Wrapper: React.FC<React.PropsWithChildren> = ({children}) => (
     djangoUrls={{
       generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
       adminLogin: 'http://localhost:8000/admin/classic-login/',
+      publicRoot: 'http://localhost:8000/',
     }}
     environmentInfo={{label: 'of-dev', showBadge: true}}
   >

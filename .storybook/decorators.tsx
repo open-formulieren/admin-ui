@@ -21,6 +21,7 @@ export const withAdminSettingsProvider: Decorator = (Story, {parameters}) => (
       ({
         generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
         adminLogin: 'http://localhost:8000/admin/classic-login/',
+        publicRoot: 'http://localhost:8000/',
       } satisfies AdminSettings['djangoUrls'])
     }
     environmentInfo={{
