@@ -1,9 +1,9 @@
 import {Button, Outline, Toolbar} from '@maykin-ui/admin-ui';
 import {Formik, useFormikContext} from 'formik';
 import {FormattedMessage} from 'react-intl';
-import {Outlet, useLoaderData} from 'react-router';
+import {Outlet, useParams} from 'react-router';
 
-import {queryClient, useFormMutation} from '@/queryClient';
+import {queryClient, useFormMutation, useFormQuery} from '@/queryClient';
 import type {InternalForm} from '@/types/form';
 
 import BasicLayout from './BasicLayout';
@@ -16,12 +16,19 @@ import BasicLayout from './BasicLayout';
  * separated FormLayoutInner component, to simplify the setup and testing.
  */
 const FormLayout = () => {
-  const form = useLoaderData<InternalForm>();
-  const {mutate} = useFormMutation(queryClient, form.uuid);
+  const {formId} = useParams();
+  const form = useFormQuery(queryClient, formId!);
+  const {mutate} = useFormMutation(queryClient, formId!);
 
   const handleSubmit = (formDetails: InternalForm) => {
     mutate(formDetails);
   };
+
+  // Should never happen, as the React-router loader should then trigger a 404.
+  // Included to satisfy TypeScript and catch any potential bugs.
+  if (!form) {
+    return null;
+  }
 
   return (
     <FormLayoutInner initialValues={form} onSubmit={handleSubmit}>
@@ -52,6 +59,7 @@ export const FormLayoutInner: React.FC<React.PropsWithChildren<FormLayoutInnerPr
     initialValues={initialValues}
     validateOnChange={false}
     validateOnBlur={false}
+    enableReinitialize
     onSubmit={async values => {
       await onSubmit(values);
     }}

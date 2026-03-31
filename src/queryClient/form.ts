@@ -1,5 +1,5 @@
-import type {QueryClient} from '@tanstack/react-query';
-import {useMutation} from '@tanstack/react-query';
+import type {QueryClient, UseBaseQueryOptions} from '@tanstack/react-query';
+import {useMutation, useQuery} from '@tanstack/react-query';
 
 import {useAdminSettings} from '@/hooks/useAdminSettings';
 import type {Form, InternalForm} from '@/types/form';
@@ -46,29 +46,67 @@ const internalFormToForm = (internalForm: InternalForm): Form => {
   return internalForm satisfies Form;
 };
 
-export const formLoader = (
+/**
+ * Default options for fetching form details from queryClient cache, or from the backend.
+ */
+const formQueryOptions = (
+  apiBaseUrl: string,
+  formId?: string
+): UseBaseQueryOptions<InternalForm> => ({
+  queryKey: getFormDetailsQueryKey(formId),
+  queryFn: async () => {
+    const response = await apiCall(`${apiBaseUrl}form/${formId}`);
+    if (response.ok) {
+      const formData: Form = await response.json();
+      return formToInternalForm(formData);
+    }
+
+    if (response.status === 404) {
+      throw new Response('Form not found', {status: 404, statusText: 'Not found'});
+    }
+
+    throw new Error('Failed to fetch form details');
+  },
+});
+
+/**
+ * Custom React-router loader for fetching form details.
+ *
+ * Used to provide preloading on router-level. To fetch the form details, you should NOT
+ * use the React-router useLoaderData hook, instead use the useFormQuery.
+ *
+ * The useLoaderData hook will return the initial data fetched by formLoader, while the
+ * useFormQuery provides access to the updated queryClient cache.
+ */
+export const formLoader = async (
   apiBaseUrl: string,
   queryClient: QueryClient,
   formId?: string
 ): Promise<InternalForm | undefined> => {
-  return queryClient.ensureQueryData({
-    queryKey: getFormDetailsQueryKey(formId),
-    queryFn: async () => {
-      const response = await apiCall(`${apiBaseUrl}form/${formId}`);
-      if (response.ok) {
-        const formData: Form = await response.json();
-        return formToInternalForm(formData);
-      }
-
-      if (response.status === 404) {
-        throw new Response('Form not found', {status: 404, statusText: 'Not found'});
-      }
-
-      throw new Error('Failed to fetch form details');
-    },
-  });
+  return await queryClient.ensureQueryData(formQueryOptions(apiBaseUrl, formId));
 };
 
+/**
+ * Hook to fetch form details from the queryClient cache.
+ */
+export const useFormQuery = (
+  queryClient: QueryClient,
+  formId?: string
+): InternalForm | undefined => {
+  const {apiBaseUrls} = useAdminSettings();
+  const {data} = useQuery(formQueryOptions(apiBaseUrls.v3, formId), queryClient);
+  return data;
+};
+
+/**
+ * Hook to update form details using a queryClient mutation.
+ *
+ * The mutationFn transforms the internal form data back to a server Form object before
+ * performing the PUT request.
+ *
+ * On a successful PUT request, the response is transformed back to an internal form and
+ * updated in the queryClient cache.
+ */
 export const useFormMutation = (queryClient: QueryClient, formId: string) => {
   const {apiBaseUrls} = useAdminSettings();
   return useMutation<Form, Error, InternalForm, {previous?: InternalForm}>({
