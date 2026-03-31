@@ -219,7 +219,10 @@ test('User is not authenticated in application and not on server', async () => {
   // Expect the redirect.toLogin function and the mock api to have been called
   await waitFor(() => {
     // The `toLogin` function should be called with the expected redirect path.
-    expect(redirect.toLogin).toHaveBeenCalledWith('/required-auth');
+    expect(redirect.toLogin).toHaveBeenCalledWith(
+      {adminLogin: expect.anything(), generalConfiguration: expect.anything()},
+      '/required-auth'
+    );
 
     expect(spy).toHaveBeenCalled();
   });

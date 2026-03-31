@@ -2,6 +2,9 @@ import {A, Banner, Body} from '@maykin-ui/admin-ui';
 import {FormattedMessage, useIntl} from 'react-intl';
 import {useLocation} from 'react-router';
 
+import {useAdminSettings} from '@/hooks/useAdminSettings';
+import {getLoginUrl} from '@/utils/url';
+
 import ErrorMessage from './ErrorMessage';
 import type {NotAuthenticatedException} from './exceptions';
 
@@ -12,7 +15,8 @@ interface NotAuthenticatedErrorProps {
 const NotAuthenticatedError: React.FC<NotAuthenticatedErrorProps> = ({error}) => {
   const intl = useIntl();
   const location = useLocation();
-  const params = new URLSearchParams({next: location.pathname});
+  const {djangoUrls} = useAdminSettings();
+  const adminLoginUrl = getLoginUrl(djangoUrls, location.pathname);
 
   return (
     <>
@@ -31,7 +35,7 @@ const NotAuthenticatedError: React.FC<NotAuthenticatedErrorProps> = ({error}) =>
       <ErrorMessage error={error} />
 
       <Body>
-        <A href={`/admin/login/?${params}`}>
+        <A href={adminLoginUrl}>
           <FormattedMessage
             description="'Go to login page' link text"
             defaultMessage="Go to the login page"
