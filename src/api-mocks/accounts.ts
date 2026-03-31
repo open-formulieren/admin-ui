@@ -3,7 +3,7 @@ import {HttpResponse, http} from 'msw';
 
 import {SESSION_EXPIRES_IN_HEADER} from '@/guard/session/session-expiry';
 
-import {BASE_URL} from './base';
+import {BASE_URL_V3} from './base';
 
 /**
  * Mock a request to the api/v3/accounts/me endpoint as an authenticated user, resulting
@@ -15,7 +15,7 @@ import {BASE_URL} from './base';
  */
 export const mockAccountsMeAuthenticatedGet = (mfaVerified: boolean, spy?: Mock) =>
   http.get(
-    `${BASE_URL}accounts/me`,
+    `${BASE_URL_V3}accounts/me`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);
@@ -42,7 +42,7 @@ export const mockAccountsMeAuthenticatedGet = (mfaVerified: boolean, spy?: Mock)
  */
 export const mockAccountsMeAnonymousGet = (spy?: Mock) =>
   http.get(
-    `${BASE_URL}accounts/me`,
+    `${BASE_URL_V3}accounts/me`,
     info => {
       // Call the spy with the request info
       if (spy) spy(info);

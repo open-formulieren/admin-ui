@@ -5,7 +5,8 @@ import {expect, test, vi} from 'vitest';
 import {render} from 'vitest-browser-react';
 
 import {
-  BASE_URL,
+  BASE_URL_V2,
+  BASE_URL_V3,
   mockAccountsMeAnonymousGet,
   mockAccountsMeAuthenticatedGet,
   mswWorker,
@@ -22,10 +23,11 @@ vi.spyOn(redirect, 'toLogin').mockImplementation(vi.fn());
 
 const Wrapper: React.FC<React.PropsWithChildren> = ({children}) => (
   <AdminSettingsProvider
-    apiBaseUrl={BASE_URL}
+    apiBaseUrls={{v2: BASE_URL_V2, v3: BASE_URL_V3}}
     djangoUrls={{
       generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
       adminLogin: 'http://localhost:8000/admin/classic-login/',
+      publicRoot: 'http://localhost:8000/',
     }}
     environmentInfo={{label: 'of-dev', showBadge: true}}
   >
@@ -220,7 +222,11 @@ test('User is not authenticated in application and not on server', async () => {
   await waitFor(() => {
     // The `toLogin` function should be called with the expected redirect path.
     expect(redirect.toLogin).toHaveBeenCalledWith(
-      {adminLogin: expect.anything(), generalConfiguration: expect.anything()},
+      {
+        adminLogin: expect.anything(),
+        generalConfiguration: expect.anything(),
+        publicRoot: expect.anything(),
+      },
       '/required-auth'
     );
 

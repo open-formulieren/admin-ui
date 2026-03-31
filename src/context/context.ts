@@ -15,22 +15,26 @@ export interface AdminSettings {
     foregroundColor?: string;
   };
   /**
-   * The base URL of the Open Forms API.
+   * The base URLs of the Open Forms API.
    */
-  apiBaseUrl: string;
+  apiBaseUrls: {
+    v2: string;
+    v3: string;
+  };
   /**
    * The configuration of the Open Forms Django URLs.
    */
   djangoUrls: {
     generalConfiguration: string;
     adminLogin: string;
+    publicRoot: string;
   };
 }
 
 const AdminSettingsContext = React.createContext<AdminSettings>({
   environmentInfo: {label: '', showBadge: true},
-  apiBaseUrl: '',
-  djangoUrls: {generalConfiguration: '', adminLogin: ''},
+  apiBaseUrls: {v2: '', v3: ''},
+  djangoUrls: {generalConfiguration: '', adminLogin: '', publicRoot: ''},
 });
 
 AdminSettingsContext.displayName = 'AdminSettingsContext';

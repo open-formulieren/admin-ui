@@ -1,4 +1,5 @@
 import FormLayout from '@/components/layout/FormLayout';
+import type {AdminSettings} from '@/context/context';
 import RouterErrorBoundary from '@/errors/RouterErrorBoundary';
 import {formLoader, queryClient} from '@/queryClient';
 import type {Form} from '@/types/form';
@@ -6,7 +7,7 @@ import type {Form} from '@/types/form';
 import formRoutes from './form';
 import type {RouteHandle, RouteObject} from './types';
 
-const routes: RouteObject[] = [
+const routes = (apiBaseUrls: AdminSettings['apiBaseUrls']): RouteObject[] => [
   // All other routes, point back to old admin
   {
     path: '/',
@@ -41,7 +42,7 @@ const routes: RouteObject[] = [
         children: [
           {
             path: ':formId',
-            loader: ({params}) => formLoader(queryClient, params.formId),
+            loader: ({params}) => formLoader(apiBaseUrls.v3, queryClient, params.formId),
             handle: {
               breadcrumbLabel: (_, loaderData) => loaderData?.name ?? 'unknown form',
             } as RouteHandle<Form | undefined>,
