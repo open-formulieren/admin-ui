@@ -128,7 +128,7 @@ export const withFormLayout: Decorator = (Story, {parameters}) => {
         children: [
           {
             path: 'forms/:formId',
-            loader: ({params}) => formLoader(storybookQueryClient, params.formId),
+            loader: ({params}) => formLoader(BASE_URL_V3, storybookQueryClient, params.formId),
             Component: FormLayout,
             children: [
               {

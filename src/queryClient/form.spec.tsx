@@ -59,7 +59,11 @@ describe('formLoader', () => {
     mswWorker.use(mockFormDetailsGet(formDetails));
 
     const testClient = new QueryClient();
-    const result = await formLoader(testClient, 'e450890a-4166-410e-8d64-0a54ad30ba01');
+    const result = await formLoader(
+      BASE_URL_V3,
+      testClient,
+      'e450890a-4166-410e-8d64-0a54ad30ba01'
+    );
 
     await expect(result).toEqual(formDetails);
   });
@@ -68,7 +72,7 @@ describe('formLoader', () => {
     mswWorker.use(mockFormDetailsGetFailure());
 
     const testClient = new QueryClient();
-    const result = formLoader(testClient, 'e450890a-4166-410e-8d64-0a54ad30ba01');
+    const result = formLoader(BASE_URL_V3, testClient, 'e450890a-4166-410e-8d64-0a54ad30ba01');
 
     await expect(result).rejects.toMatchObject({
       status: 404,
@@ -84,7 +88,7 @@ describe('formLoader in router', () => {
     const Stub = createRoutesStub([
       {
         path: '/form-details/:formId',
-        loader: ({params}) => formLoader(testClient, params.formId),
+        loader: ({params}) => formLoader(BASE_URL_V3, testClient, params.formId),
         Component: SimplePage,
       },
     ]);

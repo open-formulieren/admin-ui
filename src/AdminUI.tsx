@@ -30,7 +30,7 @@ interface AdminUIProps {
  * Main component to render the Open Forms Admin UI.
  */
 const AdminUI: React.FC<AdminUIProps> = ({environmentInfo, apiBaseUrls, djangoUrls}) => {
-  const router = createBrowserRouter(routes, {
+  const router = createBrowserRouter(routes(apiBaseUrls), {
     basename: '/admin-ui',
   });
 
