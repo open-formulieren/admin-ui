@@ -117,13 +117,15 @@ describe('useFormMutation', () => {
     testClient.setQueryData(getFormDetailsQueryKey(formId), formDetails);
 
     const {getByText} = await render(
-      <QueryClientProviderWrapper client={testClient}>
-        <PageWithFormMutation
-          testClient={testClient}
-          formId={formId}
-          updatedFormDetails={updatedFormDetails}
-        />
-      </QueryClientProviderWrapper>
+      <AppWrapper>
+        <QueryClientProviderWrapper client={testClient}>
+          <PageWithFormMutation
+            testClient={testClient}
+            formId={formId}
+            updatedFormDetails={updatedFormDetails}
+          />
+        </QueryClientProviderWrapper>
+      </AppWrapper>
     );
     await getByText('mutate data').click();
 
@@ -145,13 +147,15 @@ describe('useFormMutation', () => {
     testClient.setQueryData(getFormDetailsQueryKey(formId), formDetails);
 
     const {getByText} = await render(
-      <QueryClientProviderWrapper client={testClient}>
-        <PageWithFormMutation
-          testClient={testClient}
-          formId={formId}
-          updatedFormDetails={updatedFormDetails}
-        />
-      </QueryClientProviderWrapper>
+      <AppWrapper>
+        <QueryClientProviderWrapper client={testClient}>
+          <PageWithFormMutation
+            testClient={testClient}
+            formId={formId}
+            updatedFormDetails={updatedFormDetails}
+          />
+        </QueryClientProviderWrapper>
+      </AppWrapper>
     );
 
     await getByText('mutate data').click();

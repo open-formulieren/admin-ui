@@ -222,7 +222,11 @@ test('User is not authenticated in application and not on server', async () => {
   await waitFor(() => {
     // The `toLogin` function should be called with the expected redirect path.
     expect(redirect.toLogin).toHaveBeenCalledWith(
-      {adminLogin: expect.anything(), generalConfiguration: expect.anything()},
+      {
+        adminLogin: expect.anything(),
+        generalConfiguration: expect.anything(),
+        publicRoot: expect.anything(),
+      },
       '/required-auth'
     );
 
