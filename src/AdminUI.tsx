@@ -17,19 +17,30 @@ interface AdminUIProps {
    * Configuration for the Open Forms API base URL.
    */
   apiBaseUrl: AdminSettings['apiBaseUrl'];
+  /**
+   * The configuration of the Open Forms Django URLs.
+   *
+   * These urls should be constructed using the python `reverse` function to ensure
+   * that the urls are correct for the current environment.
+   */
+  djangoUrls: AdminSettings['djangoUrls'];
 }
 
 /**
  * Main component to render the Open Forms Admin UI.
  */
-const AdminUI: React.FC<AdminUIProps> = ({environmentInfo, apiBaseUrl}) => {
+const AdminUI: React.FC<AdminUIProps> = ({environmentInfo, apiBaseUrl, djangoUrls}) => {
   const router = createBrowserRouter(routes, {
     basename: '/admin-ui',
   });
 
   return (
     <React.StrictMode>
-      <AdminSettingsProvider environmentInfo={environmentInfo} apiBaseUrl={apiBaseUrl}>
+      <AdminSettingsProvider
+        environmentInfo={environmentInfo}
+        apiBaseUrl={apiBaseUrl}
+        djangoUrls={djangoUrls}
+      >
         <RouterProvider router={router} />
       </AdminSettingsProvider>
     </React.StrictMode>

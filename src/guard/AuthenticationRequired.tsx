@@ -9,7 +9,7 @@ import SessionStatus from './session/SessionStatus';
 import {sessionExpiresAt} from './session/session-expiry';
 
 const AuthenticationRequired: React.FC<React.PropsWithChildren> = ({children}) => {
-  const {apiBaseUrl} = useAdminSettings();
+  const {apiBaseUrl, djangoUrls} = useAdminSettings();
   const location = useLocation();
   const [sessionExpiry] = sessionExpiresAt.useState();
   const {date, authFailure} = sessionExpiry;
@@ -21,11 +21,11 @@ const AuthenticationRequired: React.FC<React.PropsWithChildren> = ({children}) =
       apiCall(`${apiBaseUrl}accounts/me`).then(response => {
         // If the user is not authenticated, redirect to the login page.
         if (response.status === 401) {
-          redirect.toLogin(location.pathname);
+          redirect.toLogin(djangoUrls, location.pathname);
         }
       });
     }
-  }, [apiBaseUrl, authFailure, date, location.pathname]);
+  }, [apiBaseUrl, authFailure, date, djangoUrls, location.pathname]);
 
   return <SessionStatus>{children}</SessionStatus>;
 };

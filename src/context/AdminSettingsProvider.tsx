@@ -3,10 +3,11 @@ import type {AdminSettings} from './context';
 
 const AdminSettingsProvider: React.FC<React.PropsWithChildren<AdminSettings>> = ({
   apiBaseUrl,
+  djangoUrls,
   environmentInfo,
   children,
 }) => (
-  <AdminSettingsContext.Provider value={{environmentInfo, apiBaseUrl}}>
+  <AdminSettingsContext.Provider value={{environmentInfo, djangoUrls, apiBaseUrl}}>
     {children}
   </AdminSettingsContext.Provider>
 );

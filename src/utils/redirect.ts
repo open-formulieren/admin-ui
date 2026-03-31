@@ -1,11 +1,9 @@
-// We wrap redirect functions inside an object because ES module named exports are
-// immutable and cannot be spied on in Vitest. Spying on object methods is supported
-// since they are configurable.
-// See: https://vitest.dev/guide/mocking.html#mocking-modules
+import type {AdminSettings} from '@/context/context';
+import {getLoginUrl} from '@/utils/url';
+
 export const redirect = {
   // Redirect to the default `/admin/login` screen
-  toLogin: (nextUrl: string) => {
-    const params = new URLSearchParams({next: nextUrl});
-    window.location.assign(`${window.location.origin}/admin/login/?${params}`);
+  toLogin: (djangoUrls: AdminSettings['djangoUrls'], nextUrl: string) => {
+    window.location.assign(getLoginUrl(djangoUrls, nextUrl));
   },
 };

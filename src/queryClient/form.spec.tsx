@@ -19,7 +19,14 @@ import {formLoader, getFormDetailsQueryKey, useFormMutation} from '@/queryClient
 import type {Form} from '@/types/form';
 
 const AppWrapper: React.FC<React.PropsWithChildren> = ({children}) => (
-  <AdminSettingsProvider apiBaseUrl={BASE_URL} environmentInfo={{label: 'of-dev', showBadge: true}}>
+  <AdminSettingsProvider
+    apiBaseUrl={BASE_URL}
+    djangoUrls={{
+      generalConfiguration: 'http://localhost:8000/admin/config/globalconfiguration/',
+      adminLogin: 'http://localhost:8000/admin/classic-login/',
+    }}
+    environmentInfo={{label: 'of-dev', showBadge: true}}
+  >
     <IntlProvider locale="en">{children}</IntlProvider>
   </AdminSettingsProvider>
 );
