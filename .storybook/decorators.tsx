@@ -5,7 +5,7 @@ import {Form, Formik} from 'formik';
 import {RouterProvider, createMemoryRouter} from 'react-router';
 import {fn} from 'storybook/test';
 
-import {BASE_URL, mswWorker} from '@/api-mocks';
+import {BASE_URL_V2, BASE_URL_V3, mswWorker} from '@/api-mocks';
 import FormLayout from '@/components/layout/FormLayout';
 import AdminSettingsProvider from '@/context/AdminSettingsProvider';
 import type {AdminSettings} from '@/context/context';
@@ -15,7 +15,7 @@ import {formLoader} from '@/queryClient';
 
 export const withAdminSettingsProvider: Decorator = (Story, {parameters}) => (
   <AdminSettingsProvider
-    apiBaseUrl={parameters?.adminSettings?.apiBaseUrl ?? BASE_URL}
+    apiBaseUrls={parameters?.adminSettings?.apiBaseUrls ?? {v2: BASE_URL_V2, v3: BASE_URL_V3}}
     djangoUrls={
       parameters?.adminSettings?.djangoUrls ??
       ({

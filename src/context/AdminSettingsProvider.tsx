@@ -2,12 +2,12 @@ import {AdminSettingsContext} from './context';
 import type {AdminSettings} from './context';
 
 const AdminSettingsProvider: React.FC<React.PropsWithChildren<AdminSettings>> = ({
-  apiBaseUrl,
+  apiBaseUrls,
   djangoUrls,
   environmentInfo,
   children,
 }) => (
-  <AdminSettingsContext.Provider value={{environmentInfo, djangoUrls, apiBaseUrl}}>
+  <AdminSettingsContext.Provider value={{environmentInfo, djangoUrls, apiBaseUrls}}>
     {children}
   </AdminSettingsContext.Provider>
 );
