@@ -39,7 +39,10 @@ export const Default: Story = {
     const canvas = within(canvasElement);
 
     const formNameInput = await canvas.findByLabelText('Form name');
-    expect(formNameInput).toHaveValue('Mock form');
+    // Wait for the correct form details to be loaded
+    waitFor(() => {
+      expect(formNameInput).toHaveValue('Mock form');
+    });
 
     // Update the field value
     await userEvent.clear(formNameInput);
@@ -69,6 +72,9 @@ export const FetchingFormDetailsUsingRouteLoader: Story = {
     const canvas = within(canvasElement);
 
     const formNameInput = await canvas.findByLabelText('Form name');
-    expect(formNameInput).toHaveValue('Route fetched form');
+    // Wait for the correct form details to be loaded
+    waitFor(() => {
+      expect(formNameInput).toHaveValue('Route fetched form');
+    });
   },
 };
