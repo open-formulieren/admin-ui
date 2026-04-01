@@ -1,5 +1,5 @@
 import type {ToolbarProps} from '@maykin-ui/admin-ui';
-import {Button, Dropdown, Outline, Toolbar} from '@maykin-ui/admin-ui';
+import {Button, Dropdown, Hr, Outline, Toolbar} from '@maykin-ui/admin-ui';
 import {useActive, useChainedCommands} from '@remirror/react';
 import {FormattedMessage, useIntl} from 'react-intl';
 
@@ -16,6 +16,7 @@ const WYSIWYGEditorToolbar = () => (
     </ToolbarGroup>
     <ToolbarGroup>
       <ListDropdown />
+      <ParagraphFormattingDropdown />
     </ToolbarGroup>
   </ToolbarGroup>
 );
@@ -108,7 +109,8 @@ const ToolbarDropdown: React.FC<ToolbarDropdownProps> = ({
 };
 
 interface ToolbarDropdownItemProps extends React.PropsWithChildren {
-  active: boolean;
+  active?: boolean;
+  disabled?: boolean;
   onClick: () => void;
 }
 
@@ -119,9 +121,20 @@ interface ToolbarDropdownItemProps extends React.PropsWithChildren {
  * toolbar. It handles the visual representation of the active state. Additionally, some
  * basic Button component configuration is applied.
  */
-const ToolbarDropdownItem: React.FC<ToolbarDropdownItemProps> = ({active, onClick, children}) => {
+const ToolbarDropdownItem: React.FC<ToolbarDropdownItemProps> = ({
+  active = false,
+  disabled = false,
+  onClick,
+  children,
+}) => {
   return (
-    <Button size="xxs" type="button" onClick={onClick} variant={active ? 'accent' : 'transparent'}>
+    <Button
+      size="xxs"
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      variant={active ? 'accent' : 'transparent'}
+    >
       {children}
     </Button>
   );
@@ -314,6 +327,102 @@ const ListDropdown: React.FC = () => {
         <FormattedMessage
           description="WYSIWYG editor list control 'ordered list' button text"
           defaultMessage="Ordered list"
+        />
+      </ToolbarDropdownItem>
+    </ToolbarDropdown>
+  );
+};
+
+const ParagraphFormattingDropdown: React.FC = () => {
+  const chain = useChainedCommands();
+  const active = useActive();
+  const intl = useIntl();
+
+  return (
+    <ToolbarDropdown
+      label={
+        <>
+          <Outline.Bars3BottomLeftIcon />
+          <Outline.ChevronDownIcon />
+        </>
+      }
+      title={intl.formatMessage({
+        description: 'WYSIWYG editor paragraph formatting control button title',
+        defaultMessage: 'Paragraph formatting',
+      })}
+      aria-label={intl.formatMessage({
+        description: 'WYSIWYG editor paragraph formatting control button aria label',
+        defaultMessage: 'Paragraph formatting',
+      })}
+    >
+      <ToolbarDropdownItem
+        onClick={() => chain.setTextAlignment('left').focus().run()}
+        active={
+          active.paragraph({nodeTextAlignment: 'left'}) ||
+          active.tableCell({nodeTextAlignment: 'left'})
+        }
+      >
+        <Outline.Bars3BottomLeftIcon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'align left' button text"
+          defaultMessage="Align left"
+        />
+      </ToolbarDropdownItem>
+      <ToolbarDropdownItem
+        onClick={() => chain.setTextAlignment('center').focus().run()}
+        active={
+          active.paragraph({nodeTextAlignment: 'center'}) ||
+          active.tableCell({nodeTextAlignment: 'center'})
+        }
+      >
+        <Outline.Bars3Icon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'align center' button text"
+          defaultMessage="Align center"
+        />
+      </ToolbarDropdownItem>
+      <ToolbarDropdownItem
+        onClick={() => chain.setTextAlignment('right').focus().run()}
+        active={
+          active.paragraph({nodeTextAlignment: 'right'}) ||
+          active.tableCell({nodeTextAlignment: 'right'})
+        }
+      >
+        <Outline.Bars3BottomRightIcon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'align right' button text"
+          defaultMessage="Align right"
+        />
+      </ToolbarDropdownItem>
+      <ToolbarDropdownItem
+        onClick={() => chain.setTextAlignment('justify').focus().run()}
+        active={
+          active.paragraph({nodeTextAlignment: 'justify'}) ||
+          active.tableCell({nodeTextAlignment: 'justify'})
+        }
+      >
+        <Outline.Bars3Icon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'align justify' button text"
+          defaultMessage="Align justify"
+        />
+      </ToolbarDropdownItem>
+      <Hr margin="xs" style={{width: '90%', alignSelf: 'center'}} />
+      <ToolbarDropdownItem onClick={() => chain.increaseIndent().focus().run()}>
+        <Outline.ArrowRightStartOnRectangleIcon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'increase indent' button text"
+          defaultMessage="Increase indent"
+        />
+      </ToolbarDropdownItem>
+      <ToolbarDropdownItem
+        onClick={() => chain.decreaseIndent().focus().run()}
+        disabled={active.paragraph({nodeIndent: 0}) || active.tableCell({nodeIndent: 0})}
+      >
+        <Outline.ArrowRightStartOnRectangleIcon />
+        <FormattedMessage
+          description="WYSIWYG editor paragraph formatting control 'decrease indent' button text"
+          defaultMessage="Decrease indent"
         />
       </ToolbarDropdownItem>
     </ToolbarDropdown>
