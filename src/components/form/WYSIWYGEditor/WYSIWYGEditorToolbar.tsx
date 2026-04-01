@@ -1,6 +1,6 @@
-import type {ToolbarProps} from '@maykin-ui/admin-ui';
+import type {DropdownProps, ToolbarProps} from '@maykin-ui/admin-ui';
 import {Button, Dropdown, Hr, Outline, Toolbar} from '@maykin-ui/admin-ui';
-import {useActive, useChainedCommands} from '@remirror/react';
+import {useActive, useChainedCommands, useCommands} from '@remirror/react';
 import {FormattedMessage, useIntl} from 'react-intl';
 
 const WYSIWYGEditorToolbar = () => (
@@ -17,6 +17,7 @@ const WYSIWYGEditorToolbar = () => (
     <ToolbarGroup>
       <ListDropdown />
       <ParagraphFormattingDropdown />
+      <TableDropdown />
     </ToolbarGroup>
   </ToolbarGroup>
 );
@@ -77,8 +78,10 @@ const ToolbarButton: React.FC<ToolbarButtonProps> = ({
 
 interface ToolbarDropdownProps extends React.PropsWithChildren {
   label: React.ReactNode;
-  title: string;
-  'aria-label': string;
+  title?: string;
+  'aria-label'?: string;
+  activateOnHover?: boolean;
+  placement?: DropdownProps['placement'];
 }
 
 /**
@@ -91,6 +94,8 @@ const ToolbarDropdown: React.FC<ToolbarDropdownProps> = ({
   label,
   title,
   'aria-label': ariaLabel,
+  activateOnHover,
+  placement,
   children,
 }) => {
   return (
@@ -102,6 +107,8 @@ const ToolbarDropdown: React.FC<ToolbarDropdownProps> = ({
       variant="transparent"
       title={title}
       aria-label={ariaLabel}
+      activateOnHover={activateOnHover}
+      placement={placement}
     >
       {children}
     </Dropdown>
@@ -423,6 +430,186 @@ const ParagraphFormattingDropdown: React.FC = () => {
         <FormattedMessage
           description="WYSIWYG editor paragraph formatting control 'decrease indent' button text"
           defaultMessage="Decrease indent"
+        />
+      </ToolbarDropdownItem>
+    </ToolbarDropdown>
+  );
+};
+
+const TableDropdown: React.FC = () => {
+  const chain = useChainedCommands();
+  const {
+    splitTableCell,
+    mergeTableCells,
+    addTableColumnAfter,
+    addTableColumnBefore,
+    deleteTableColumn,
+    addTableRowAfter,
+    addTableRowBefore,
+    deleteTableRow,
+    deleteTable,
+  } = useCommands();
+  const active = useActive();
+  const intl = useIntl();
+
+  return (
+    <ToolbarDropdown
+      label={
+        <>
+          <Outline.TableCellsIcon />
+          <Outline.ChevronDownIcon />
+        </>
+      }
+      title={intl.formatMessage({
+        description: 'WYSIWYG editor table control button title',
+        defaultMessage: 'Table',
+      })}
+      aria-label={intl.formatMessage({
+        description: 'WYSIWYG editor table control button aria label',
+        defaultMessage: 'Table',
+      })}
+    >
+      <ToolbarDropdownItem
+        onClick={() => chain.createTable().focus().run()}
+        active={active.table()}
+      >
+        <Outline.TableCellsIcon />
+        <FormattedMessage
+          description="WYSIWYG editor table control 'create table' button text"
+          defaultMessage="Create table"
+        />
+      </ToolbarDropdownItem>
+      <ToolbarDropdown
+        activateOnHover
+        placement="right"
+        label={
+          <>
+            <FormattedMessage
+              description="WYSIWYG editor table control 'cell actions' button text"
+              defaultMessage="Cell"
+            />
+            <Outline.ChevronRightIcon />
+          </>
+        }
+      >
+        <ToolbarDropdownItem
+          onClick={() => chain.mergeTableCells().focus().run()}
+          disabled={!mergeTableCells.enabled()}
+        >
+          <Outline.SquaresPlusIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'merge table cells' button text"
+            defaultMessage="Merge table cells"
+          />
+        </ToolbarDropdownItem>
+        <ToolbarDropdownItem
+          onClick={() => chain.splitTableCell().focus().run()}
+          disabled={!splitTableCell.enabled()}
+        >
+          <Outline.XMarkIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'split table cells' button text"
+            defaultMessage="Split table cells"
+          />
+        </ToolbarDropdownItem>
+      </ToolbarDropdown>
+      <ToolbarDropdown
+        activateOnHover
+        placement="right"
+        label={
+          <>
+            <FormattedMessage
+              description="WYSIWYG editor table control 'row actions' button text"
+              defaultMessage="Row"
+            />
+            <Outline.ChevronRightIcon />
+          </>
+        }
+      >
+        <ToolbarDropdownItem
+          onClick={() => chain.addTableRowBefore().focus().run()}
+          disabled={!addTableRowBefore.enabled()}
+        >
+          <Outline.SquaresPlusIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'insert row before' button text"
+            defaultMessage="Insert row before"
+          />
+        </ToolbarDropdownItem>
+        <ToolbarDropdownItem
+          onClick={() => chain.addTableRowAfter().focus().run()}
+          disabled={!addTableRowAfter.enabled()}
+        >
+          <Outline.SquaresPlusIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'insert row after' button text"
+            defaultMessage="Insert row after"
+          />
+        </ToolbarDropdownItem>
+        <ToolbarDropdownItem
+          onClick={() => chain.deleteTableRow().focus().run()}
+          disabled={!deleteTableRow.enabled()}
+        >
+          <Outline.XMarkIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'delete row' button text"
+            defaultMessage="Delete row"
+          />
+        </ToolbarDropdownItem>
+      </ToolbarDropdown>
+      <ToolbarDropdown
+        activateOnHover
+        placement="right"
+        label={
+          <>
+            <FormattedMessage
+              description="WYSIWYG editor table control 'column actions' button text"
+              defaultMessage="Column"
+            />
+            <Outline.ChevronRightIcon />
+          </>
+        }
+      >
+        <ToolbarDropdownItem
+          onClick={() => chain.addTableColumnBefore().focus().run()}
+          disabled={!addTableColumnBefore.enabled()}
+        >
+          <Outline.SquaresPlusIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'insert column before' button text"
+            defaultMessage="Insert column before"
+          />
+        </ToolbarDropdownItem>
+        <ToolbarDropdownItem
+          onClick={() => chain.addTableColumnAfter().focus().run()}
+          disabled={!addTableColumnAfter.enabled()}
+        >
+          <Outline.SquaresPlusIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'insert column after' button text"
+            defaultMessage="Insert column after"
+          />
+        </ToolbarDropdownItem>
+        <ToolbarDropdownItem
+          onClick={() => chain.deleteTableColumn().focus().run()}
+          disabled={!deleteTableColumn.enabled()}
+        >
+          <Outline.XMarkIcon />
+          <FormattedMessage
+            description="WYSIWYG editor table control 'delete column' button text"
+            defaultMessage="Delete column"
+          />
+        </ToolbarDropdownItem>
+      </ToolbarDropdown>
+      <Hr margin="xs" style={{width: '90%', alignSelf: 'center'}} />
+      <ToolbarDropdownItem
+        onClick={() => chain.deleteTable().focus().run()}
+        disabled={!deleteTable.enabled()}
+      >
+        <Outline.XMarkIcon />
+        <FormattedMessage
+          description="WYSIWYG editor table control 'delete table' button text"
+          defaultMessage="Delete table"
         />
       </ToolbarDropdownItem>
     </ToolbarDropdown>

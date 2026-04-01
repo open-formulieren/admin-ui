@@ -1,4 +1,5 @@
 import {ErrorMessage} from '@maykin-ui/admin-ui';
+import {TableComponents, TableExtension} from '@remirror/extension-react-tables';
 import {EditorComponent, Remirror, useRemirror} from '@remirror/react';
 import {useField, useFormikContext} from 'formik';
 import {prosemirrorNodeToHtml} from 'remirror';
@@ -57,6 +58,7 @@ const WYSIWYGEditor: React.FC<WYSIWYGEditorProps> = ({name, label}) => {
       new OrderedListExtension(),
       new NodeFormattingExtension({}),
       new TextHighlightExtension({}),
+      new TableExtension({resizable: true}),
       new LinkExtension({autoLink: true}),
       new ListItemExtension({}),
       /**
@@ -100,6 +102,7 @@ const WYSIWYGEditor: React.FC<WYSIWYGEditorProps> = ({name, label}) => {
         >
           <WYSIWYGEditorToolbar />
           <EditorComponent />
+          <TableComponents enableTableCellMenu={false} />
         </Remirror>
       </div>
     </FormField>
