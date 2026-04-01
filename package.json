@@ -89,6 +89,7 @@
   },
   "dependencies": {
     "@maykin-ui/admin-ui": "^3.0.0-alpha.5",
+    "@remirror/extension-react-tables": "^3.0.3",
     "@remirror/pm": "^3.0.1",
     "@remirror/react": "^3.0.3",
     "@tanstack/react-query": "^5.90.16",
