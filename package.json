@@ -92,6 +92,7 @@
     "@remirror/extension-react-tables": "^3.0.3",
     "@remirror/pm": "^3.0.1",
     "@remirror/react": "^3.0.3",
+    "@remirror/react-ui": "^1.0.3",
     "@tanstack/react-query": "^5.90.16",
     "clsx": "^2.1.1",
     "formik": "^2.4.9",

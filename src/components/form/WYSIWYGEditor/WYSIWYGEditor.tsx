@@ -24,6 +24,7 @@ import FieldDescription from '@/components/form/FieldDescription';
 import FormField from '@/components/form/FormField';
 import Label from '@/components/form/Label';
 
+import {FloatingLinkToolbar, LinkEditorProvider} from './LinkEditor';
 import './WYSIWYGEditor.scss';
 import WYSIWYGEditorToolbar from './WYSIWYGEditorToolbar';
 
@@ -80,7 +81,7 @@ const WYSIWYGEditor: React.FC<WYSIWYGEditorProps> = ({name, label}) => {
         {invalid && <ErrorMessage>{error}</ErrorMessage>}
       </FieldDescription>
 
-      <div className="remirror-theme openforms-wysiwyg-editor" data-testid="wysiwyg-editor">
+      <div className="remirror-theme" data-testid="wysiwyg-editor">
         <Remirror
           manager={manager}
           initialContent={state}
@@ -100,7 +101,11 @@ const WYSIWYGEditor: React.FC<WYSIWYGEditorProps> = ({name, label}) => {
             setTouched(true);
           }}
         >
-          <WYSIWYGEditorToolbar />
+          <LinkEditorProvider>
+            <WYSIWYGEditorToolbar />
+            <FloatingLinkToolbar />
+          </LinkEditorProvider>
+
           <EditorComponent />
           <TableComponents enableTableCellMenu={false} />
         </Remirror>

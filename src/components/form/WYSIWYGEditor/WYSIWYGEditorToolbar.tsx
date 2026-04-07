@@ -3,6 +3,8 @@ import {Button, Dropdown, Hr, Outline, Toolbar} from '@maykin-ui/admin-ui';
 import {useActive, useChainedCommands, useCommands} from '@remirror/react';
 import {FormattedMessage, useIntl} from 'react-intl';
 
+import {useLinkEditor} from './LinkEditor';
+
 const WYSIWYGEditorToolbar = () => (
   <ToolbarGroup padSize="s">
     <ToolbarGroup>
@@ -18,6 +20,9 @@ const WYSIWYGEditorToolbar = () => (
       <ListDropdown />
       <ParagraphFormattingDropdown />
       <TableDropdown />
+    </ToolbarGroup>
+    <ToolbarGroup>
+      <LinkButton />
     </ToolbarGroup>
   </ToolbarGroup>
 );
@@ -613,6 +618,28 @@ const TableDropdown: React.FC = () => {
         />
       </ToolbarDropdownItem>
     </ToolbarDropdown>
+  );
+};
+
+const LinkButton: React.FC = () => {
+  const {openEditorModal, selectionIsLink} = useLinkEditor();
+  const intl = useIntl();
+
+  return (
+    <ToolbarButton
+      active={selectionIsLink}
+      onClick={openEditorModal}
+      title={intl.formatMessage({
+        description: 'WYSIWYG editor link control button title',
+        defaultMessage: 'Link',
+      })}
+      aria-label={intl.formatMessage({
+        description: 'WYSIWYG editor link control button aria label',
+        defaultMessage: 'Link',
+      })}
+    >
+      <Outline.LinkIcon />
+    </ToolbarButton>
   );
 };
 
